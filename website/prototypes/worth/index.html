@@ -37,7 +37,7 @@ body{display:grid;place-items:center}
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="tag"><i></i>Worth<span>Interactive prototype</span></div>
 <div class="device"><iframe class="phone" src="app.html" title="Worth app prototype" allow="microphone; clipboard-write; autoplay"></iframe></div>
-<script>(function(){var d=document.querySelector('.device');function fit(){var h=innerHeight,w=Math.max(395,Math.min(h*.5*1.04,470*1.04,innerWidth));d.style.setProperty('--pw',Math.round(w)+'px');}fit();addEventListener('resize',fit);})();</script>
+<script>(function(){var d=document.querySelector('.device');function fit(){var h=innerHeight,w=Math.min(innerWidth,Math.max(395,Math.min(h*.5*1.04,470*1.04,innerWidth))*1.03);d.style.setProperty('--pw',Math.round(w)+'px');}fit();addEventListener('resize',fit);})();</script>
 </body></html>
 
 </body></html>
