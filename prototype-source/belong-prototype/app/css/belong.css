@@ -427,8 +427,8 @@ h3 {
   position: relative;
   z-index: 1;
   flex: 1;
-  margin-top: -64px;
-  padding: 44px 24px calc(24px + env(safe-area-inset-bottom, 0px));
+  margin-top: -92px;
+  padding: 72px 24px calc(24px + env(safe-area-inset-bottom, 0px));
   border-radius: 0;
   -webkit-mask-image: radial-gradient(circle 430px at 50% 430px, #000 99.6%, transparent 100%), linear-gradient(#000, #000);
   mask-image: radial-gradient(circle 430px at 50% 430px, #000 99.6%, transparent 100%), linear-gradient(#000, #000);
