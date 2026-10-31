@@ -429,7 +429,15 @@ h3 {
   flex: 1;
   margin-top: -64px;
   padding: 44px 24px calc(24px + env(safe-area-inset-bottom, 0px));
-  border-radius: 50% 50% 0 0/64px 64px 0 0;
+  border-radius: 0;
+  -webkit-mask-image: radial-gradient(circle 430px at 50% 430px, #000 99.6%, transparent 100%), linear-gradient(#000, #000);
+  mask-image: radial-gradient(circle 430px at 50% 430px, #000 99.6%, transparent 100%), linear-gradient(#000, #000);
+  -webkit-mask-size: 100% 50px, 100% calc(100% - 49px);
+  mask-size: 100% 50px, 100% calc(100% - 49px);
+  -webkit-mask-position: 0 0, 0 49px;
+  mask-position: 0 0, 0 49px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   background: var(--b-surface);
   display: flex;
   flex-direction: column;
