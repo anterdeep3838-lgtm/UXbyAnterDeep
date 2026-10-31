@@ -1166,4 +1166,29 @@ if (window.Matter && !reduce){
 (()=>{const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('zz',!e.isIntersecting)),{rootMargin:'120px 0px'});
 document.querySelectorAll('body > header, body > section, body > footer, main > section, main > header, .hero, .stage, .skills, .cta').forEach(el=>io.observe(el));})();
 </script>
+<script>
+/* "Get in touch" / "Contact": scroll so the contact box shows from its badge down to the Email + LinkedIn buttons */
+(()=>{
+  const links=[...document.querySelectorAll('a[href="#contact"]')];
+  if(!links.length) return;
+  const target=()=>{
+    const badge=document.querySelector('#contact .badge'), row=document.querySelector('#contact .cta-links');
+    if(!badge||!row) return null;
+    const nav=document.querySelector('.nav'), navB=nav?nav.getBoundingClientRect().bottom:90;
+    const y=window.scrollY, top=badge.getBoundingClientRect().top+y, bottom=row.getBoundingClientRect().bottom+y;
+    const vh=window.innerHeight, pad=14;
+    let t=bottom+pad-vh;                 /* Email/LinkedIn row sits at the bottom edge */
+    t=Math.min(t, top-navB-pad);         /* never hide the badge under the nav (short screens) */
+    const max=document.documentElement.scrollHeight-vh;
+    return Math.max(0, Math.min(t, max));
+  };
+  links.forEach(a=>a.addEventListener('click',e=>{
+    const t=target(); if(t==null) return;
+    e.preventDefault();
+    window.scrollTo({top:t,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+    try{history.replaceState(null,'','#contact')}catch(_){}
+  }));
+})();
+</script>
+
 
