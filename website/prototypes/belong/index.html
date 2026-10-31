@@ -1,8 +1,8 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Belong</title>
-<script>if(innerWidth<700)location.replace('app.html'+location.hash);</script>
 <style>
 :root{--a:#c2180f;--b:#ff5a3c;--c:#ff9a6b}
 html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#07080a;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -31,6 +31,7 @@ body{display:grid;place-items:center}
 .phone{display:block;width:var(--pw,402px);height:100vh;height:100dvh;border:0;border-radius:0;background:#000}
 @media (max-width:1340px){.g1,.g2,.g3,.g4{display:none}}
 @media (max-width:900px){.tag{display:none}}
+@media (max-width:699px){.device{top:0;left:0;right:0;bottom:0;transform:none;box-shadow:none}.phone{width:100vw!important;height:100dvh!important}.bg,.glass,.tag{display:none}}
 </style></head>
 <body>
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -41,4 +42,6 @@ body{display:grid;place-items:center}
 <div class="tag"><i></i>Belong<span>Interactive prototype</span></div>
 <div class="device"><iframe class="phone" src="app.html" title="Belong app prototype" allow="microphone; clipboard-write; autoplay"></iframe></div>
 <script>(function(){var d=document.querySelector('.device');function fit(){var h=innerHeight,w=Math.max(395,Math.min(h*.5*1.04,470*1.04,innerWidth));d.style.setProperty('--pw',Math.round(w)+'px');}fit();addEventListener('resize',fit);})();</script>
+</body></html>
+
 </body></html>
