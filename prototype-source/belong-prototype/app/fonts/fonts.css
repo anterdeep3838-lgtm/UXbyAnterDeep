@@ -1,0 +1,6 @@
+/* Plus Jakarta Sans (SIL Open Font License 1.1), self-hosted so the prototype works offline */
+@font-face{font-family:"Plus Jakarta Sans";src:url("PlusJakartaSans-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";src:url("PlusJakartaSans-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";src:url("PlusJakartaSans-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";src:url("PlusJakartaSans-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";src:url("PlusJakartaSans-ExtraBold.ttf") format("truetype");font-weight:800;font-display:swap}

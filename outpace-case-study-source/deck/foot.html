@@ -1,0 +1,271 @@
+
+</main>
+<script>
+(() => {
+  const deck = document.getElementById('deck'), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fit = () => { const k = Math.min(1, document.documentElement.clientWidth / 1600); deck.style.setProperty('--k', k); document.querySelectorAll('.next').forEach(n => n.style.setProperty('--k', k)); };
+  fit(); addEventListener('resize', fit);
+
+  const TOTAL = 29;
+  document.querySelectorAll('.tb[data-pg]').forEach(t => { const n = +t.dataset.pg;
+    t.querySelector('.pg').textContent = String(n).padStart(2, '0') + ' / ' + TOTAL;
+    t.querySelector('.ln i').style.setProperty('--p', n / TOTAL); });
+
+  // count-up
+  const count = el => { const to = +el.dataset.count; if (reduce) { el.textContent = to; return; } let s = null;
+    const step = t => { s ??= t; const p = Math.min(1, (t - s) / 1100); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    el.textContent = 0; requestAnimationFrame(step); };
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; el.classList.add('in'); io.unobserve(el);
+    el.querySelectorAll?.('[data-count]').forEach(count); if (el.dataset.count) count(el); }), {threshold: .16});
+  document.querySelectorAll('.r,.rx,.tb').forEach(el => io.observe(el));
+  document.querySelectorAll('.ov-stats [data-count]').forEach(el => io.observe(el));
+
+  // overview: sports light up in turn
+
+  // role: race track with stage nodes, a runner, and a readout
+  const rl = document.getElementById('s4');
+  if (rl) { const path = rl.querySelector('#rlp'), lit = rl.querySelector('.rl-lit'), run = rl.querySelector('.rl-run'), L = path.getTotalLength();
+    lit.style.setProperty('--len', L);
+    const STOPS = [0, .37, .55, .7, 1];
+    const TXT = [
+      ['Stage 01 · Research', 'Studied how sports stores guide, compare and sell, and what players need to choose well.'],
+      ['Stage 02 · Structure', 'Mapped the catalogue and navigation, then the key journeys from discovery to returns.'],
+      ['Stage 03 · Design', 'Built the night-stadium visual language, components and every state, from empty to error.'],
+      ['Stage 04 · Build', 'Turned the design into a working store with AI-assisted development, page by page.'],
+      ['Stage 05 · Refine', 'Ran focused iteration rounds on clarity, navigation, Build Your Kit and catalogue quality.']];
+    const vb = {w: 720, h: 520}, nodes = [...rl.querySelectorAll('.rl-nodes button')];
+    nodes.forEach((b, k) => { const p = path.getPointAtLength(L * STOPS[k]); b.style.left = (p.x / vb.w * 100) + '%'; b.style.top = (p.y / vb.h * 100) + '%'; });
+    let cur = 0, auto = !reduce, pos = 0, target = 0;
+    const set = k => { cur = k; nodes.forEach((b, j) => b.classList.toggle('on', j <= k)); rl.querySelector('#rlE').textContent = TXT[k][0]; rl.querySelector('#rlT').textContent = TXT[k][1]; target = STOPS[k]; };
+    nodes.forEach((b, k) => { b.addEventListener('click', () => { auto = false; set(k); }); b.addEventListener('mouseenter', () => { auto = false; set(k); }); });
+    const tick = () => { pos += (target - pos) * .06; const p = path.getPointAtLength(L * pos); run.setAttribute('cx', p.x); run.setAttribute('cy', p.y); requestAnimationFrame(tick); };
+    set(0); requestAnimationFrame(tick);
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) rl.classList.add('in-view'); }, {threshold: .3}).observe(rl);
+    setInterval(() => { if (auto && rl.classList.contains('in-view')) set((cur + 1) % 5); }, 2600); }
+
+  // problem: the runner clears each hurdle and reveals the fix
+  const race = document.getElementById('pbRace');
+  if (race) { const dot = race.querySelector('.pb-dot'), items = [...race.querySelectorAll('.pb-list li')]; let k = -1, hold = false;
+    const go = i => { k = i; items.forEach((li, j) => li.classList.toggle('on', j === i)); const li = items[i], r0 = race.getBoundingClientRect(), r = li.getBoundingClientRect();
+      const kz = parseFloat(getComputedStyle(deck).getPropertyValue('--k')) || 1; dot.style.left = ((r.left - r0.left) / kz + (i ? 30 : 0) + 6) + 'px'; };
+    items.forEach((li, i) => { li.addEventListener('mouseenter', () => { hold = true; go(i); }); li.addEventListener('mouseleave', () => hold = false); });
+    go(0); if (!reduce) setInterval(() => { if (!hold) go((k + 1) % items.length); }, 2400); }
+
+  // 4W+H: a runner sprints up each lane in turn
+  const wl = [...document.querySelectorAll('.wh-ln')]; let wi = -1, wh = false, wv = false;
+  const wgo = i => { wl.forEach(x => x.classList.remove('on')); void wl[i].offsetWidth; wl[i].classList.add('on'); wi = i; };
+  wl.forEach((l, i) => { l.addEventListener('mouseenter', () => { wh = true; wgo(i); }); l.addEventListener('mouseleave', () => wh = false);
+    l.addEventListener('focus', () => { wh = true; wgo(i); }); l.addEventListener('blur', () => wh = false); });
+  if (wl.length) { new IntersectionObserver(([e]) => wv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('s6'));
+    if (!reduce) setInterval(() => { if (!wh && wv) wgo((wi + 1) % wl.length); }, 2600); }
+
+  // users: lanes light in turn
+  const lanes = [...document.querySelectorAll('.us-ln')]; let li = 0, lh = false;
+  lanes.forEach(l => { l.addEventListener('mouseenter', () => { lh = true; lanes.forEach(x => x.classList.remove('on')); }); l.addEventListener('mouseleave', () => lh = false); });
+  if (lanes.length && !reduce) setInterval(() => { if (lh) return; lanes.forEach(x => x.classList.remove('on')); lanes[li].classList.add('on'); li = (li + 1) % lanes.length; }, 2200);
+
+  // 09 research: filter findings by stage
+  // 10 insights: rows light in turn
+  const inR = [...document.querySelectorAll('#inRows li')]; let ii = 0, ih = false;
+  inR.forEach(l => { l.addEventListener('mouseenter', () => { ih = true; inR.forEach(x => x.classList.remove('on')); }); l.addEventListener('mouseleave', () => ih = false); });
+  if (inR.length && !reduce) setInterval(() => { if (ih) return; inR.forEach(x => x.classList.remove('on')); inR[ii].classList.add('on'); ii = (ii + 1) % inR.length; }, 2000);
+
+  // 11 IA: wires draw in
+  const iaM = document.getElementById('iaMap');
+  if (iaM) new IntersectionObserver(([e]) => { if (e.isIntersecting) iaM.classList.add('in-view'); }, {threshold: .2}).observe(iaM);
+
+  // 12 flows: hold-and-drag dial
+  const dial = document.getElementById('flDial');
+  if (dial) {
+    const FL = [
+      ['Discover & buy', 'Find the right gear and pay with no surprises.', [['Home or Shop by Sport', 'Pick a sport, or search'], ['Category list', 'Filter, sort, add to compare'], ['Product page', 'Plain-language specs, size, delivery check'], ['Cart', 'Itemised total, free-delivery note'], ['Checkout', 'Address, delivery, payment'], ['Order confirmed', 'Tracking starts in the account']]],
+      ['Compare', 'Weigh up to three options in one view.', [['Any product card', 'Tap Compare, the tray follows you'], ['Compare tray', 'Up to three products at the bottom'], ['Side by side', 'Show differences only, if you like'], ['Pick the winner', 'Open its page or add to cart']]],
+      ['Build Your Kit', 'A complete, budget-safe kit from a few answers.', [['Build a Kit', 'From the header, hero or any sport'], ['Short questions', 'Sport, level, where you play, budget'], ['Your kit', 'Each item shows why it is there'], ['Swap & size', 'Total updates live against budget'], ['Add the kit', 'Only when you choose to']]],
+      ['Track & return', 'Know where the order is, and fix a wrong size fast.', [['Account, Orders', 'Filter by on the way, delivered, returns'], ['Order details', 'Shipment events and arrival date'], ['Start a return', 'Pick items and quantities'], ['Pickup or drop-off', 'Choose how it goes back'], ['Refund or new size', 'Status stays visible in the account']]]];
+    const knob = dial.querySelector('#flKnob'), arc = dial.querySelector('.fl-arc'), labs = [...dial.querySelectorAll('.fl-lab')], imgs = [...document.querySelectorAll('.fl-ph img')];
+    const tk = dial.querySelector('.fl-ticks'); for (let a = 0; a < 360; a += 7.5) { const r1 = a % 90 ? 140 : 132, t = (a - 90) * Math.PI / 180;
+      tk.insertAdjacentHTML('beforeend', `<line x1="${200 + Math.cos(t) * r1}" y1="${200 + Math.sin(t) * r1}" x2="${200 + Math.cos(t) * 146}" y2="${200 + Math.sin(t) * 146}"/>`); }
+    let cur = -1, ang = 0, dragging = false, touched = false;
+    const show = k => { if (k === cur) return; cur = k; const f = FL[k];
+      document.getElementById('flNo').textContent = '0' + (k + 1); document.getElementById('flName').textContent = f[0]; document.getElementById('flGoal').textContent = f[1];
+      document.getElementById('flSteps').innerHTML = f[2].map((s, i) => `<li style="--i:${i}" class="${i === f[2].length - 1 ? 'end' : ''}"><b>${s[0]}</b><span>${s[1]}</span></li>`).join('');
+      labs.forEach((l, j) => l.classList.toggle('on', j === k)); imgs.forEach(im => im.classList.toggle('on', +im.dataset.k === k));
+      knob.setAttribute('aria-valuenow', k + 1); knob.setAttribute('aria-valuetext', f[0]); };
+    const setAng = a => { ang = (a + 360) % 360; knob.style.setProperty('--a', ang + 'deg'); arc.style.strokeDasharray = `${Math.max(.5, ang / 3.6)} 100`; show(Math.min(3, Math.floor(((ang + 45) % 360) / 90))); };
+    const snap = k => { const from = ang, to = k * 90 + (k === 0 && ang > 180 ? 360 : 0); let s = null;
+      const st = t => { s ??= t; const p = Math.min(1, (t - s) / 520), e = 1 - Math.pow(1 - p, 3); setAng(from + (to - from) * e); if (p < 1) requestAnimationFrame(st); }; requestAnimationFrame(st); };
+    const angAt = e => { const r = dial.getBoundingClientRect(); return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI + 90; };
+    knob.addEventListener('pointerdown', e => { dragging = touched = true; dial.classList.add('drag'); knob.setPointerCapture(e.pointerId); e.preventDefault(); });
+    knob.addEventListener('pointermove', e => { if (dragging) setAng(angAt(e)); });
+    const end = () => { if (!dragging) return; dragging = false; dial.classList.remove('drag'); snap(cur); };
+    knob.addEventListener('pointerup', end); knob.addEventListener('pointercancel', end);
+    knob.addEventListener('keydown', e => { if (['ArrowRight', 'ArrowDown'].includes(e.key)) { touched = true; snap((cur + 1) % 4); e.preventDefault(); } if (['ArrowLeft', 'ArrowUp'].includes(e.key)) { touched = true; snap((cur + 3) % 4); e.preventDefault(); } });
+    labs.forEach(l => l.addEventListener('click', () => { touched = true; snap(+l.dataset.k); }));
+    setAng(0);
+    let vis = false; new IntersectionObserver(([e]) => vis = e.isIntersecting, {threshold: .35}).observe(dial);
+    if (!reduce) setInterval(() => { if (vis && !touched && !dragging) snap((cur + 1) % 4); }, 4200);
+  }
+
+  // 13 iterations: before / after switch
+  const itS = document.getElementById('itSw');
+  if (itS) itS.addEventListener('click', () => { const on = itS.getAttribute('aria-checked') !== 'true'; itS.setAttribute('aria-checked', on); document.getElementById('s14').classList.toggle('before', !on); });
+
+  // 14 decisions: tabs + balance
+  const dcB = [...document.querySelectorAll('#dcList button')];
+  if (dcB.length) {
+    const DC = [
+      ['The four main links are on every page, so any section is one click away.', 'The header is busier on small screens. On mobile, the links move to a second row.'],
+      ['Beginners see what a spec means. Regular players still get the exact numbers.', 'Every product needs extra copy, and each line must match the real spec.'],
+      ['Nothing goes into the cart unless the shopper adds it, so they control the budget.', 'One extra tap to add the kit, but no surprise items at checkout.'],
+      ['The compare tray stays at the bottom, so products can be added from any page.', 'It uses a thin strip of the screen. One tap clears it.'],
+      ['Orders, tracking and returns sit in one account. The cart is kept after sign-in, and browsing needs no account.', 'First-time buyers sign in once before paying.']];
+    const sc = document.querySelector('.dc-scale'), rd = document.querySelector('.dc-read'); let dk = 0, dHold = false, dTouched = false;
+    const dset = k => { dk = k; dcB.forEach((b, j) => { b.classList.toggle('on', j === k); b.setAttribute('aria-selected', j === k); });
+      rd.classList.add('fade'); sc.classList.add('tip');
+      setTimeout(() => { document.getElementById('dcWhy').textContent = DC[k][0]; document.getElementById('dcCost').textContent = DC[k][1]; rd.classList.remove('fade'); sc.classList.remove('tip'); }, 260); };
+    dcB.forEach((b, k) => { b.addEventListener('click', () => { dTouched = true; dset(k); }); b.addEventListener('mouseenter', () => dHold = true); b.addEventListener('mouseleave', () => dHold = false); });
+    dset(0); let dv = false; new IntersectionObserver(([e]) => dv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('s15'));
+    if (!reduce) setInterval(() => { if (dv && !dHold && !dTouched) dset((dk + 1) % 5); }, 4600);
+  }
+
+  // 15 swipe to add (drag, or Enter/Space)
+  const sw = document.getElementById('swDemo');
+  if (sw) { const card = sw.querySelector('.sw-card'), st = document.getElementById('swState'); let on = false, x0 = 0, dx = 0, drag = false;
+    const W = () => sw.clientWidth;
+    const set = v => { on = v; sw.classList.add('anim'); sw.classList.toggle('on', on); sw.style.setProperty('--x', '0px');
+      sw.querySelector('.sw-track span').innerHTML = on ? sw.dataset.add : sw.dataset.rem;
+      st.innerHTML = on ? '<b>In cart · 1</b> · drag left, or press Enter, to remove' : 'Not in cart · drag right, or press Enter, to add'; st.classList.toggle('on', on);
+      const bg = document.getElementById('swBag'); if (bg) { document.getElementById('swN').textContent = on ? 1 : 0; bg.classList.toggle('on', on); bg.classList.remove('bump'); void bg.offsetWidth; if (on) bg.classList.add('bump'); }
+      setTimeout(() => sw.classList.remove('anim'), 460); };
+    sw.dataset.add = sw.querySelector('.sw-track span').innerHTML; sw.dataset.rem = sw.dataset.add.replace('Added to cart', 'Removed');
+    card.addEventListener('pointerdown', e => { drag = true; x0 = e.clientX; dx = 0; sw.classList.add('drag'); card.setPointerCapture(e.pointerId); });
+    card.addEventListener('pointermove', e => { if (!drag) return; const kz = parseFloat(getComputedStyle(deck).getPropertyValue('--k')) || 1; dx = (e.clientX - x0) / kz; dx = on ? Math.min(0, dx) : Math.max(0, dx);
+      sw.style.setProperty('--x', Math.abs(dx) + 'px'); card.style.transform = `translateX(${dx}px)`; });
+    const up = () => { if (!drag) return; drag = false; sw.classList.remove('drag'); card.style.transform = ''; if (Math.abs(dx) > W() * .35) set(!on); else { sw.classList.add('anim'); sw.style.setProperty('--x', '0px'); setTimeout(() => sw.classList.remove('anim'), 460); } };
+    card.addEventListener('pointerup', up); card.addEventListener('pointercancel', up);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!on); } });
+    set(false); }
+
+  // 16 compare: differences only
+  const cpS = document.getElementById('cpSw');
+  if (cpS) cpS.addEventListener('click', () => { const v = cpS.getAttribute('aria-checked') !== 'true'; cpS.setAttribute('aria-checked', v); document.getElementById('cpT').classList.toggle('diff', v); });
+
+  // 17 checkout stepper
+  const coB = [...document.querySelectorAll('#coSteps button')];
+  if (coB.length) { const MSG = [
+      'Saved address: <em>Aarav Sharma · Flat 402, Lotus Residency, Patna 800001.</em> Change it any time before payment.',
+      'Standard delivery is <em>free</em>. Express shows <em>"Not available for 800001. Express covers metro pincodes."</em>',
+      'Choose UPI, card or cash on delivery. The total is already final: <em>no new charges appear here.</em>'];
+    let ck = 0, cTouch = false;
+    const cset = k => { ck = k; coB.forEach((b, j) => { b.classList.toggle('on', j === k); b.classList.toggle('done', j < k); b.setAttribute('aria-selected', j === k); }); document.getElementById('coMsg').innerHTML = MSG[k]; };
+    coB.forEach((b, k) => b.addEventListener('click', () => { cTouch = true; cset(k); })); cset(0);
+    let cv = false; new IntersectionObserver(([e]) => cv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('s18'));
+    if (!reduce) setInterval(() => { if (cv && !cTouch) cset((ck + 1) % 3); }, 3200); }
+
+  // 18 guided questions: progress runs, budget slider
+  const kqL = [...document.querySelectorAll('#kqRun li')];
+  if (kqL.length) { const run = document.getElementById('kqRun'); let qk = 0, qh = false;
+    const qset = k => { qk = k; kqL.forEach((l, j) => { l.classList.toggle('on', j === k); l.classList.toggle('done', j < k); }); run.style.setProperty('--p', k + 1); };
+    kqL.forEach((l, k) => { l.addEventListener('mouseenter', () => { qh = true; qset(k); }); l.addEventListener('mouseleave', () => qh = false); });
+    qset(0); if (!reduce) setInterval(() => { if (!qh) qset((qk + 1) % 5); }, 2000);
+    const kb = document.getElementById('kqB'), ko = document.getElementById('kqBo'), inr = v => '₹' + (+v).toLocaleString('en-IN');
+    kb.addEventListener('input', () => { ko.textContent = inr(kb.value); }); }
+
+  // 19 kit builder: live total vs budget
+  const kbD = document.getElementById('kbDemo');
+  if (kbD) { const inr = v => '₹' + Math.round(v).toLocaleString('en-IN');
+    const IT = [['Strikeline Grade 2 English Willow Bat', 'Bat · chosen for control while you learn', 2549, 1], ['Shieldcore Batting Helmet', 'Helmet · sized by head', 849, 1], ['Guardline Batting Pads', 'Pads · cane-reinforced', 699, 1], ['Gripmax Batting Gloves', 'Gloves · split-finger padding', 649, 1], ['Test Grade Leather Ball', 'Ball · for nets and games', 349, 1], ['All-Rounder Rubber Stud Shoes', 'Shoes · grip on turf and matting', 2599, 1],
+      ['Duffle Kit Backpack', 'Optional · kit bag with bat sleeve', 1249, 0], ['Match Stumps with Bails', 'Optional · set up nets anywhere', 449, 0], ['Squeeze Sport Bottle 750 ml', 'Optional · water within reach', 299, 0]];
+    const on = IT.map(i => !!i[3]), ul = document.getElementById('kbItems'), bud = document.getElementById('kbB'), CHK = document.querySelector('.ic') ? '' : '';
+    ul.innerHTML = '<li class="grp">Core gear · 6</li>' + IT.map((i, k) => (k === 6 ? '<li class="grp">Optional extras · add if they fit</li>' : '') + `<li class="${k > 5 ? 'opt' : ''}" data-k="${k}"><button type="button" aria-pressed="${on[k]}" aria-label="Include ${i[0]}"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><span>${i[0]}<small>${i[1]}</small></span><em>${inr(i[2])}</em></li>`).join('');
+    const draw = () => { const B = +bud.value, T = IT.reduce((a, i, k) => a + (on[k] ? i[2] : 0), 0), n = on.filter(Boolean).length, M = Math.max(B, T) * 1.08;
+      document.getElementById('kbBo').textContent = inr(B); document.getElementById('kbTot').textContent = inr(T);
+      document.getElementById('kbFill').style.width = (T / M * 100) + '%'; document.getElementById('kbMark').style.left = (B / M * 100) + '%';
+      ul.querySelectorAll('li[data-k]').forEach(li => { const k = +li.dataset.k; li.classList.toggle('off', !on[k]); li.querySelector('button').setAttribute('aria-pressed', on[k]); });
+      const over = T > B; kbD.classList.toggle('over', over);
+      document.getElementById('kbNote').innerHTML = over ? `<b>${inr(T - B)} over budget.</b> Remove an extra or raise the budget. Nothing is added for you.` : `${n} items · <b>${inr(B - T)} left</b> in your budget.`; };
+    ul.addEventListener('click', e => { const li = e.target.closest('li[data-k]'); if (!li) return; const k = +li.dataset.k; on[k] = !on[k]; draw(); });
+    bud.addEventListener('input', draw); draw(); }
+
+  // 20 responsive: drag the frame width
+  const rpS = document.getElementById('rpStage');
+  if (rpS) { const fr = document.getElementById('rpFrame'), gr = document.getElementById('rpGrip'); let f = 1, rd = false;
+    const lay = v => { f = Math.max(.32, Math.min(1, v)); const full = rpS.clientWidth - 36, w = full * f; fr.style.width = w + 'px'; gr.style.left = (18 + w) + 'px';
+      const px = Math.round(390 + (1440 - 390) * (f - .32) / .68), sm = px < 700, md = !sm && px < 1100; fr.classList.toggle('sm', sm); fr.classList.toggle('md', md);
+      document.getElementById('rpW').textContent = (sm ? 'Phone' : md ? 'Tablet' : 'Desktop') + ' · ' + px + ' px';
+      document.getElementById('rpT').textContent = sm ? 'The four links move to a second row. Still no hamburger.' : md ? 'Links stay centred; the grid drops to two columns.' : 'Four links sit in the centre of the header.'; };
+    gr.addEventListener('pointerdown', e => { rd = true; gr.setPointerCapture(e.pointerId); });
+    gr.addEventListener('pointermove', e => { if (!rd) return; const r = rpS.getBoundingClientRect(); lay((e.clientX - r.left - 18 * (r.width / rpS.clientWidth)) / ((rpS.clientWidth - 36) * (r.width / rpS.clientWidth))); });
+    gr.addEventListener('pointerup', () => rd = false); gr.addEventListener('pointercancel', () => rd = false);
+    gr.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { lay(f - .05); e.preventDefault(); } if (e.key === 'ArrowRight') { lay(f + .05); e.preventDefault(); } });
+    lay(1); addEventListener('resize', () => lay(f));
+    let rv = false, rTouch = false, dir = -1; gr.addEventListener('pointerdown', () => rTouch = true); gr.addEventListener('keydown', () => rTouch = true);
+    new IntersectionObserver(([e]) => rv = e.isIntersecting, {threshold: .3}).observe(rpS);
+    let rDone = false; // one demo pass only: shrink to phone, grow back, then hand over to the user
+    if (!reduce) { const rT = setInterval(() => { if (rTouch || rDone) { clearInterval(rT); return; } if (!rv) return; if (f <= .33) dir = 1; if (dir === 1 && f >= .99) { lay(1); rDone = true; clearInterval(rT); return; } lay(f + dir * .012); }, 40); } }
+
+  // 22 typography: Barlow weight, Archivo width
+  document.querySelectorAll('.ty-w button').forEach(b => b.addEventListener('click', () => { document.querySelectorAll('.ty-w button').forEach(x => x.classList.toggle('on', x === b)); document.getElementById('tyBig').style.fontWeight = b.dataset.w; }));
+  const tyS = document.getElementById('tyS');
+  if (tyS) tyS.addEventListener('input', () => { document.getElementById('tyWide').style.fontStretch = tyS.value + '%'; document.getElementById('tySo').textContent = tyS.value + '%'; });
+
+  // 23 colour orbit with live contrast vs the page ink
+  const orb = document.getElementById('clOrbit');
+  if (orb) { const CL = [['Ink', '#0B0807', 'Page ground', 'Page background'], ['Ink 2', '#161110', 'Cards', 'Product cards'], ['Bone', '#F4EDE7', 'Primary text', 'Headings'], ['Ash', '#A0948D', 'Secondary text', 'Spec labels'], ['Ember', '#FF5A1F', 'Primary action', 'Add to cart'], ['Flare', '#FF9A3C', 'Focus ring & accents', 'Focus ring'], ['Sun', '#FFC272', 'Highlights & prices', 'Kit prices'], ['Blood', '#B3200E', 'Gradient depth', 'Button edges'], ['Go', '#5FD18B', 'Success', 'In-stock dot'], ['Alert', '#FF5D5D', 'Errors', 'Form errors']];
+    const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255).map(v => v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4)); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+    const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+    const dots = CL.map((c, k) => { const a = (k / CL.length) * Math.PI * 2 - Math.PI / 2, d = document.createElement('button'); d.type = 'button'; d.className = 'cl-dot';
+      d.style.left = (50 + Math.cos(a) * 45) + '%'; d.style.top = (50 + Math.sin(a) * 45) + '%'; d.style.background = c[1]; d.setAttribute('aria-label', c[0] + ' ' + c[1]); d.innerHTML = `<span>${c[0]}</span>`; orb.appendChild(d); return d; });
+    let ck = 4, cH = false;
+    const cpick = k => { ck = k; const c = CL[k]; dots.forEach((d, j) => d.classList.toggle('on', j === k));
+      document.getElementById('clSw').style.background = c[1]; document.getElementById('clName').textContent = c[0]; document.getElementById('clHex').textContent = c[1]; document.getElementById('clRole').textContent = c[2]; document.getElementById('clUse').innerHTML = '<span>Used on</span>' + c[3];
+      const r = k < 2 ? cr(c[1], '#F4EDE7') : cr(c[1], '#0B0807'); document.getElementById('clCr').textContent = (k < 2 ? 'Bone text on it ' : 'On ink ') + r.toFixed(1) + ' : 1' + (r >= 4.5 ? ' · AA' : ''); };
+    dots.forEach((d, k) => { d.addEventListener('click', () => { cH = true; cpick(k); }); d.addEventListener('mouseenter', () => cpick(k)); });
+    cpick(4); let ov = false; new IntersectionObserver(([e]) => ov = e.isIntersecting, {threshold: .3}).observe(orb);
+    if (!reduce) setInterval(() => { if (ov && !cH) cpick((ck + 1) % CL.length); }, 2200); }
+
+  // 24 component states
+  const cmB = document.getElementById('cmBoard');
+  if (cmB) { const CAP = {
+      rest: ['Ember marks the one main action; glass for the second.', 'Clear label above, the country code built in.', 'The selected chip lights up in ember.'],
+      hover: ['Lifts 2 px and glows, so the target feels ready.', 'Border brightens to show the field is live.', 'Unselected chips catch fire on hover.'],
+      focus: ['A <b>2 px flare ring</b> with offset, visible on every surface.', 'Flare border plus a soft halo for keyboard users.', 'Focus ring sits outside the chip, never hidden.'],
+      busy: ['A spinner replaces doubt; repeated taps are blocked.', 'Live typing state while the number is entered.', 'Chips hold their place while results load.'],
+      err: ['Buttons stay usable so the fix is one tap away.', '<b>The message says how to fix it,</b> in plain words.', 'Chips stay readable; the message nearby explains.'],
+      off: ['Disabled is dimmed and never the only clue.', 'Disabled fields keep their label readable.', 'Unavailable chips step back without disappearing.'] };
+    const tabs = [...document.querySelectorAll('#cmTabs button')]; let si = 0, sT = false;
+    const sset = k => { si = k; const s = tabs[k].dataset.s; cmB.dataset.s = s; tabs.forEach((t, j) => { t.classList.toggle('on', j === k); t.setAttribute('aria-selected', j === k); });
+      ['cmCapB', 'cmCapI', 'cmCapC'].forEach((id, j) => document.getElementById(id).innerHTML = CAP[s][j]); };
+    tabs.forEach((t, k) => t.addEventListener('click', () => { sT = true; sset(k); })); sset(0);
+    let cmv = false; new IntersectionObserver(([e]) => cmv = e.isIntersecting, {threshold: .3}).observe(cmB);
+    if (!reduce) setInterval(() => { if (cmv && !sT) sset((si + 1) % tabs.length); }, 2600); }
+
+  // 25 UX law lanes
+  const uxL = [...document.querySelectorAll('.ux-ln')];
+  if (uxL.length) { let ui = 0, uT = false; const uset = k => { ui = k; uxL.forEach((l, j) => l.classList.toggle('on', j === k)); };
+    uxL.forEach((l, k) => { l.addEventListener('click', () => { uT = true; uset(k); }); l.addEventListener('mouseenter', () => { uT = true; uset(k); }); l.addEventListener('focus', () => uset(k)); });
+    let uv = false; new IntersectionObserver(([e]) => uv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('uxLanes'));
+    if (!reduce) setInterval(() => { if (uv && !uT) uset((ui + 1) % uxL.length); }, 3600); }
+
+  // 27 learnings light in turn
+  const leL = [...document.querySelectorAll('.le-list li')]; let lk = 0, lH = false;
+  leL.forEach(l => { l.addEventListener('mouseenter', () => { lH = true; leL.forEach(x => x.classList.remove('on')); }); l.addEventListener('mouseleave', () => lH = false); });
+  if (leL.length && !reduce) setInterval(() => { if (lH) return; leL.forEach(x => x.classList.remove('on')); leL[lk].classList.add('on'); lk = (lk + 1) % leL.length; }, 2200);
+
+  // 28 closing: slow push-in
+  const cz = document.getElementById('s29');
+  if (cz) new IntersectionObserver(([e]) => cz.classList.toggle('in-view', e.isIntersecting), {threshold: .3}).observe(cz);
+
+  // progress
+  const prog = document.getElementById('prog');
+  const onScroll = () => { const h = document.documentElement; prog.style.transform = `scaleX(${h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)})`; };
+  addEventListener('scroll', onScroll, {passive: true}); onScroll();
+})();
+</script>
+<style>.zz,.zz *{animation-play-state:paused!important}</style>
+<script>/* perf: pause looping animations in slides that are off-screen */
+(()=>{if(!('IntersectionObserver' in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('zz',!e.isIntersecting)),{rootMargin:'200px 0px'});document.querySelectorAll('section').forEach(s=>io.observe(s));})();</script>
+</body>
+</html>

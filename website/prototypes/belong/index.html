@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Belong</title>
+<script>if(innerWidth<700)location.replace('app.html'+location.hash);</script>
+<style>
+:root{--a:#c2180f;--b:#ff5a3c;--c:#ff9a6b}
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#07080a;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{display:grid;place-items:center}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg i{position:absolute;border-radius:50%;background:radial-gradient(closest-side,var(--k) 0%,color-mix(in srgb,var(--k) 40%,transparent) 55%,transparent 100%)}
+.bg i:nth-child(1){--k:var(--a);width:70vw;height:70vw;left:-22vw;top:-30vw;opacity:.55}
+.bg i:nth-child(2){--k:var(--b);width:60vw;height:60vw;right:-20vw;bottom:-28vw;opacity:.45}
+.bg i:nth-child(3){--k:var(--c);width:34vw;height:34vw;right:6vw;top:-8vw;opacity:.28}
+.bg i:nth-child(4){--k:var(--a);width:30vw;height:30vw;left:8vw;bottom:-12vw;opacity:.3}
+.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 40% 70% at 50% 50%,rgba(7,8,10,.55),transparent 75%)}
+.glass{position:fixed;border-radius:28px;background:linear-gradient(150deg,rgba(255,255,255,.13),rgba(255,255,255,.035));
+  border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 30px 70px -30px rgba(0,0,0,.6);
+  backdrop-filter:blur(26px) saturate(1.4);-webkit-backdrop-filter:blur(26px) saturate(1.4);pointer-events:none}
+.glass b{display:block;height:10px;border-radius:6px;background:rgba(255,255,255,.16);margin:0 22px 12px}
+.glass b.k{height:34px;width:34px;border-radius:12px;background:color-mix(in srgb,var(--a) 55%,rgba(255,255,255,.2));margin:22px 22px 18px}
+.g1{left:calc(50% - 640px);top:16vh;width:230px;height:250px;transform:rotate(-7deg)}
+.g2{right:calc(50% - 650px);top:44vh;width:250px;height:190px;transform:rotate(6deg)}
+.g3{left:calc(50% - 560px);bottom:9vh;width:150px;height:110px;transform:rotate(9deg)}
+.g4{right:calc(50% - 540px);top:11vh;width:120px;height:120px;border-radius:50%;transform:none}
+.tag{position:fixed;left:28px;top:24px;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 10px;border-radius:999px;color:#fff;font-size:14px;font-weight:600;letter-spacing:-.01em;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tag i{width:10px;height:10px;border-radius:50%;background:var(--a);box-shadow:0 0 12px var(--a)}
+.tag span{color:#fff;font-weight:500}
+.device{position:fixed;left:50%;top:0;bottom:0;z-index:1;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 90px -10px rgba(0,0,0,.7)}
+.phone{display:block;width:var(--pw,402px);height:100vh;height:100dvh;border:0;border-radius:0;background:#000}
+@media (max-width:1340px){.g1,.g2,.g3,.g4{display:none}}
+@media (max-width:900px){.tag{display:none}}
+</style></head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="glass g1" aria-hidden="true"><b class="k"></b><b style="width:58%"></b><b style="width:40%"></b><b style="width:70%;margin-top:26px"></b><b style="width:50%"></b></div>
+<div class="glass g2" aria-hidden="true"><b class="k"></b><b style="width:66%"></b><b style="width:44%"></b></div>
+<div class="glass g3" aria-hidden="true"></div>
+<div class="glass g4" aria-hidden="true"></div>
+<div class="tag"><i></i>Belong<span>Interactive prototype</span></div>
+<div class="device"><iframe class="phone" src="app.html" title="Belong app prototype" allow="microphone; clipboard-write; autoplay"></iframe></div>
+<script>(function(){var d=document.querySelector('.device');function fit(){var h=innerHeight,w=Math.max(395,Math.min(h*.5*1.04,470*1.04,innerWidth));d.style.setProperty('--pw',Math.round(w)+'px');}fit();addEventListener('resize',fit);})();</script>
+</body></html>

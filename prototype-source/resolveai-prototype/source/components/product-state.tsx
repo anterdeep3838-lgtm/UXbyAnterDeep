@@ -1,0 +1,21 @@
+"use client";
+import React,{useState,useEffect,useCallback,createContext,useContext} from 'react';
+import {usePathname,useRouter} from 'next/navigation';
+import {toast} from 'sonner';
+import {Toaster} from '@/components/ui/sonner';
+import {Conversation,seedConversations} from '@/lib/product';
+import {useDemoState} from '@/hooks/use-demo-state';
+import {registerProductTools} from '@/lib/webmcp';
+type ProductContext={data:Conversation[];update:(id:string,patch:Partial<Conversation>,event?:string)=>void;go:(path:string)=>void;theme:string;setTheme:(v:string)=>void;language:string;setLanguage:(v:string)=>void;company:string;setCompany:(v:string)=>void;widgetOpen:boolean;setWidgetOpen:(v:boolean)=>void;widgetColor:string;setWidgetColor:(v:string)=>void;widgetGreeting:string;setWidgetGreeting:(v:string)=>void;notify:(text:string)=>void;notifications:{id:number;text:string;read:boolean;path:string}[];setNotifications:React.Dispatch<React.SetStateAction<{id:number;text:string;read:boolean;path:string}[]>>};
+const Context=createContext<ProductContext>(null!);
+export const useProduct=()=>useContext(Context);
+export function ProductProvider({children}:{children:React.ReactNode}){const path=usePathname()||'/';const router=useRouter();const [data,setData]=useDemoState('conversations-v2',seedConversations());const [theme,setTheme]=useDemoState('theme','Light');const [language,setLanguage]=useDemoState('language','English');const [company,setCompany]=useDemoState('company','NovaWear');const [widgetOpen,setWidgetOpen]=useState(false);const [widgetColor,setWidgetColor]=useDemoState('widget-color','#155d55');const [widgetGreeting,setWidgetGreeting]=useDemoState('widget-greeting','How can we help today?');const [notifications,setNotifications]=useState([{id:1,text:'Emily Carter needs help with a duplicate charge',read:false,path:'/app/inbox?id=conv-1'},{id:2,text:'Instagram authorization requires attention',read:false,path:'/app/settings?tab=Channels'},{id:3,text:'Returns policy knowledge synced',read:true,path:'/app/knowledge'}]);
+useEffect(()=>{const m=window.matchMedia('(prefers-color-scheme: dark)');const apply=()=>document.documentElement.classList.toggle('dark',path.startsWith('/app')&&(theme==='Dark'||theme==='System'&&m.matches));apply();m.addEventListener('change',apply);return()=>m.removeEventListener('change',apply)},[theme,path]);
+useEffect(()=>{document.documentElement.dir=language==='Arabic'&&path.startsWith('/app')?'rtl':'ltr';document.documentElement.dataset.page=path.split('/')[2]||'marketing'},[language,path]);
+const go=useCallback((p:string)=>{router.push(p);window.scrollTo(0,0)},[router]);
+const notify=useCallback((text:string)=>{toast.success(text);setNotifications(n=>[{id:Date.now(),text,read:false,path},...n])},[path]);
+const update=useCallback((id:string,patch:Partial<Conversation>,event?:string)=>setData(d=>d.map(c=>c.id===id?{...c,...patch,messages:event?[...c.messages,{id:crypto.randomUUID(),kind:'event',text:event,time:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}]:patch.messages?[...c.messages,...patch.messages.filter(m=>!c.messages.some(existing=>existing.id===m.id))]:c.messages}:c)),[]);
+const value={data,update,go,theme,setTheme,language,setLanguage,company,setCompany,widgetOpen,setWidgetOpen,widgetColor,setWidgetColor,widgetGreeting,setWidgetGreeting,notify,notifications,setNotifications};
+useEffect(()=>registerProductTools(data,go,update),[data,go,update]);
+useEffect(()=>{const app=path.startsWith('/app');const density=sessionStorage.getItem('resolveai-demo-density');const font=sessionStorage.getItem('resolveai-demo-font-size');try{document.documentElement.dataset.density=app&&density?JSON.parse(density).toLowerCase():'comfortable';const size=app&&font?JSON.parse(font):'Medium';document.documentElement.style.fontSize=size==='Small'?'14px':size==='Large'?'18px':'16px'}catch{}},[path]);
+return <Context.Provider value={value}><Toaster position="bottom-right" richColors/>{children}</Context.Provider>}
