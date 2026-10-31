@@ -23890,6 +23890,7 @@ Error generating stack: ` +
       [DT, vm] = (0, E.useState)(!1),
       [by, yy] = (0, E.useState)(null),
       [PT, nu] = (0, E.useState)(!1),
+      [rmC, rmS] = (0, E.useState)(!1),
       [Za, Sy] = (0, E.useState)("P001"),
       [wy, LT] = (0, E.useState)("R001"),
       [AL, zT] = (0, E.useState)(""),
@@ -24264,7 +24265,7 @@ Error generating stack: ` +
           }));
       },
       nA = () => {
-        (fu(null), Lt({ id: Date.now(), message: "Your roommate listing was removed.", duration: 4e3 }));
+        (fu(null), B(null), nu(!1), rmS(!1), Lt({ id: Date.now(), message: "Your roommate listing was removed.", duration: 4e3 }));
       },
       aA = (b) => {
         let R = Lr.find((_) => _.propertyId === b);
@@ -25374,7 +25375,7 @@ Error generating stack: ` +
                         }),
                         (0, r.jsx)("button", {
                           className: "b-btn b-btn-outline",
-                          onClick: nA,
+                          onClick: () => rmS(!0),
                           children: "Remove",
                         }),
                       ],
@@ -25391,6 +25392,30 @@ Error generating stack: ` +
                   ),
                 ),
               }),
+              rmC &&
+                (0, r.jsx)("div", {
+                  role: "alertdialog",
+                  "aria-modal": "true",
+                  "aria-labelledby": "rm-t",
+                  onClick: (b) => {
+                    b.target === b.currentTarget && rmS(!1);
+                  },
+                  style: { position: "fixed", inset: 0, zIndex: 300, background: "rgba(20,16,14,.5)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 },
+                  children: (0, r.jsxs)("div", {
+                    style: { background: "#fff", borderRadius: 22, padding: "26px 22px 20px", width: "100%", maxWidth: 340, boxShadow: "0 24px 60px -12px rgba(0,0,0,.4)", textAlign: "center" },
+                    children: [
+                      (0, r.jsx)("h2", { id: "rm-t", style: { margin: "0 0 8px", fontSize: "1.2rem", lineHeight: 1.25 }, children: "Remove your roommate listing?" }),
+                      (0, r.jsx)("p", { style: { margin: "0 0 20px", color: "#716c68", fontSize: ".9rem", lineHeight: 1.5 }, children: "Other people will no longer find you, and you\u2019ll need to list yourself again to see roommates." }),
+                      (0, r.jsxs)("div", {
+                        style: { display: "flex", gap: 10 },
+                        children: [
+                          (0, r.jsx)("button", { className: "b-btn b-btn-outline", style: { flex: 1 }, onClick: () => rmS(!1), children: "Cancel" }),
+                          (0, r.jsx)("button", { className: "b-btn b-btn-primary", style: { flex: 1 }, onClick: nA, children: "Remove" }),
+                        ],
+                      }),
+                    ],
+                  }),
+                }),
             ],
           });
     }
