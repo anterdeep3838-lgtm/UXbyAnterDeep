@@ -99,9 +99,12 @@ body{background-image:url("assets/grain.png");background-size:180px}
 @keyframes heroFloat{0%{transform:translate(0,0) scale(1)}33%{transform:translate(9%,-10%) scale(1.12)}66%{transform:translate(-7%,8%) scale(.92)}100%{transform:translate(5%,4%) scale(1.06)}}
 @media (prefers-reduced-motion:reduce){.hero-bg i{animation:none}}
 @media (max-width:720px){.hero .sp-cta{left:7%!important;top:600px!important;--s:14px!important}}
-.case-veil{position:fixed;inset:0;z-index:9999;pointer-events:none;visibility:hidden;clip-path:circle(0 at var(--x,50%) var(--y,50%))}
-.case-veil.on{visibility:visible;pointer-events:auto;clip-path:circle(150vmax at var(--x,50%) var(--y,50%));transition:clip-path .75s cubic-bezier(.55,0,.25,1)}
-@media (prefers-reduced-motion:reduce){.case-veil.on{transition:none}}
+.case-veil{position:fixed;inset:0;z-index:9999;pointer-events:none;visibility:hidden;overflow:hidden;contain:strict}
+.case-veil i{position:absolute;left:0;top:0;width:240px;height:240px;margin:-120px 0 0 -120px;border-radius:50%;background:var(--vbg,#111);
+  transform:translate(var(--x,50vw),var(--y,50vh)) scale(.01);will-change:transform;backface-visibility:hidden}
+.case-veil.on{visibility:visible;pointer-events:auto}
+.case-veil.on i{transform:translate(var(--x,50vw),var(--y,50vh)) scale(var(--k,20));transition:transform .7s cubic-bezier(.6,0,.25,1)}
+@media (prefers-reduced-motion:reduce){.case-veil.on i{transition:none}}
 /* project peek: hover note beside a ring card */
 .peek{position:fixed;left:0;top:0;z-index:60;width:max-content;max-width:min(372px,calc(100vw - 24px));padding:10px 16px 11px;border-radius:14px;background:rgba(255,255,255,.96);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 0 0 1px var(--line),0 18px 40px -22px rgba(21,22,28,.4);
@@ -139,18 +142,23 @@ body{background-image:url("assets/grain.png");background-size:180px}
 .stage::after{content:"";position:absolute;inset:auto 0 -90px;height:210px;background:linear-gradient(to bottom,transparent,var(--paper));z-index:4;pointer-events:none}
 
 .ring{position:absolute;left:0;right:0;top:0;height:calc(var(--stage-h,640px) * .86);z-index:1;perspective:var(--P,1000px);
-  touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+  touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;overflow:hidden;contain:layout paint}
 .ring.dragging{cursor:grabbing}
 .ring-inner{position:absolute;left:50%;top:44%;width:0;height:0;transform-style:preserve-3d}
-.card{position:absolute;left:0;top:0;width:var(--cw,230px);height:var(--ch,306px);margin-left:calc(var(--cw,230px) / -2);margin-top:calc(var(--ch,306px) / -2);
+.card{--px:40px;--pt:56px;--pb:72px;position:absolute;left:0;top:0;width:calc(var(--cw,230px) + var(--px) * 2);height:calc(var(--ch,306px) + var(--pt) + var(--pb));
+  margin-left:calc(var(--cw,230px) / -2 - var(--px));margin-top:calc(var(--ch,306px) / -2 - var(--pt));pointer-events:none;
   border-radius:22px;text-decoration:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform;color:var(--white);outline-offset:4px}
-.card .in{position:absolute;inset:0;border-radius:22px;overflow:hidden;filter:grayscale(1) contrast(1.05);
-  box-shadow:0 30px 60px -28px rgba(21,22,28,.45),0 0 0 1px rgba(255,255,255,.25) inset;
-  transition:filter .45s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
-.card:hover .in,.card:focus-visible .in{filter:none;transform:translateY(-18px) scale(1.07);box-shadow:0 44px 70px -26px rgba(21,22,28,.55),0 0 0 1px rgba(255,255,255,.3) inset}
+.card .in{position:absolute;inset:var(--pt) var(--px) var(--pb);border-radius:22px;overflow:hidden;filter:grayscale(1) contrast(1.05);pointer-events:auto;
+  box-shadow:0 0 0 1px rgba(255,255,255,.25) inset;transition:filter .45s var(--ease),transform .5s var(--ease)}
+.card::before{content:"";position:absolute;inset:var(--pt) var(--px) var(--pb);border-radius:22px;pointer-events:none;
+  box-shadow:0 34px 56px -26px rgba(21,22,28,.5);transition:transform .5s var(--ease)}
+.card:hover .in,.card:focus-visible .in{filter:none;transform:translateY(-18px) scale(1.07)}
+.card:hover::before,.card:focus-visible::before{transform:translateY(-14px) scale(1.07)}
 .case-cover .in{filter:none}
-.card:focus-visible{outline:2px solid var(--blue);border-radius:22px}
+.case-cover .card{--px:0px;--pt:0px;--pb:0px;pointer-events:auto}
+.card:focus-visible{outline:none}.card:focus-visible .in{outline:2px solid var(--blue);outline-offset:4px}
+.lite .card::before{box-shadow:0 24px 30px -22px rgba(21,22,28,.4)}
+.lite .glow i{animation:none}
 .card .in .face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px}
 .card .face::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 35%);pointer-events:none}
 .card .name{font-family:var(--display);font-size:calc(var(--cw,230px) * .2);line-height:.95;letter-spacing:-.02em;position:relative;z-index:2}
@@ -626,7 +634,7 @@ function ringTick(now){
     vel += (target - vel) * Math.min(1, dt * (Math.abs(vel) > auto + 1 ? 1.6 : 3));
     rot += vel * dt;
   }
-  if (ringVisible) layoutRing();
+  if (ringVisible && !window.__pauseAnim) layoutRing();
   if (ringVisible) requestAnimationFrame(ringTick); else ringSleeping = true;
 }
 let ringSleeping = false;
@@ -669,6 +677,14 @@ cards.forEach(c => c.addEventListener('blur', () => hover = false));
 addEventListener('resize', sizeRing);
 sizeRing();
 requestAnimationFrame(ringTick);
+(() => {                                              // watch real frame times once; slow device -> lighter effects
+  const ts = []; let t0 = 0;
+  const f = t => { if (!t0) t0 = t; ts.push(t);
+    if (t - t0 < 2500) return requestAnimationFrame(f);
+    const d = ts.slice(1).map((x, i) => x - ts[i]).sort((a, b) => a - b), med = d[d.length >> 1] || 0;
+    if (med > 24 || (navigator.hardwareConcurrency || 8) <= 2) document.documentElement.classList.add('lite'); };
+  setTimeout(() => requestAnimationFrame(f), 1200);
+})();
 
 
 /* ================= PROJECT PEEK ================= */
@@ -684,8 +700,8 @@ if (peek && matchMedia('(hover:hover) and (pointer:fine)').matches){
   let cur = null, timer = 0, raf = 0;
   const place = () => {
     if (!cur) return;
-    const r = cur.getBoundingClientRect(), pw = peek.offsetWidth, ph = peek.offsetHeight, vw = innerWidth, vh = innerHeight, g = 14;
-    const lift = 18 + r.height * .035;               // the card rises on hover; sit clear above it
+    const r = (cur.querySelector('.in') || cur).getBoundingClientRect(), pw = peek.offsetWidth, ph = peek.offsetHeight, vw = innerWidth, vh = innerHeight, g = 14;
+    const lift = 0;                                  // the face rect already includes the hover lift
     let x = Math.max(12, Math.min(vw - pw - 12, r.left + r.width / 2 - pw / 2));
     let y = r.top - lift - g - ph;
     if (y < 8) y = 8;
@@ -761,28 +777,35 @@ inner.addEventListener('pointerdown', e => { const c = e.target.closest('.card')
 inner.addEventListener('focusin', e => { const c = e.target.closest('.card'); if (c) warm(c.dataset.id); });
 
 const veil = document.createElement('div');
-veil.className = 'case-veil'; veil.setAttribute('aria-hidden', 'true'); document.body.appendChild(veil);
+veil.className = 'case-veil'; veil.setAttribute('aria-hidden', 'true'); veil.innerHTML = '<i></i>'; document.body.appendChild(veil);
 let veilTimer = 0;
 let going = false;
 function goCase(id){
   if (!CASE[id]) return false;
   if (going) return true;                             // a second click while opening does nothing
   going = true;
-  const r = (document.activeElement && document.activeElement.closest && document.activeElement.closest('.card')) ? document.activeElement.getBoundingClientRect() : null;
+  const ae = document.activeElement, fc = ae && ae.closest && ae.closest('.card');
+  const r = fc ? (fc.querySelector('.in') || fc).getBoundingClientRect() : null;
   const pt = lastPress || (r ? {x:r.left + r.width/2, y:r.top + r.height/2} : {x:innerWidth/2, y:innerHeight/2});
+  const W = innerWidth, H = innerHeight, far = Math.hypot(Math.max(pt.x, W - pt.x), Math.max(pt.y, H - pt.y));
   veil.style.setProperty('--x', pt.x + 'px'); veil.style.setProperty('--y', pt.y + 'px');
-  veil.style.background = CASE[id].bg;
+  veil.style.setProperty('--k', ((far * 2 + 80) / 240).toFixed(2));   // circle grows until it covers every corner
+  veil.style.setProperty('--vbg', CASE[id].bg);
+  window.__pauseAnim = true;                          // stop ring + character work so nothing competes with the cover
   veil.classList.remove('on'); void veil.offsetWidth; veil.classList.add('on');
-  clearTimeout(veilTimer); veilTimer = setTimeout(() => { going = false; veil.classList.remove('on'); }, 10000); // never stay stuck
-  const href = pageOf(id);                            // let the cover play (most of it) before the page swaps in
-  if (reduce) location.href = href; else setTimeout(() => { location.href = href; }, 480);
+  clearTimeout(veilTimer); veilTimer = setTimeout(() => { going = false; window.__pauseAnim = false; veil.classList.remove('on'); }, 10000); // never stay stuck
+  const href = pageOf(id);
+  if (reduce){ location.href = href; return true; }
+  let went = false; const go = () => { if (went) return; went = true; location.href = href; };
+  veil.firstChild.addEventListener('transitionend', go, {once:true});  // swap pages the moment the screen is covered
+  setTimeout(go, 760);
   return true;
 }
 window.goCase = goCase;
 let lastPress = null;
 ring.addEventListener('pointerdown', e => { lastPress = {x:e.clientX, y:e.clientY}; }, true);
 addEventListener('keydown', () => { lastPress = null; }, true);
-addEventListener('pageshow', () => { going = false; clearTimeout(veilTimer); veil.classList.remove('on'); }); // back button
+addEventListener('pageshow', () => { going = false; window.__pauseAnim = false; clearTimeout(veilTimer); veil.classList.remove('on'); }); // back button
 
 /* ================= CHARACTER ================= */
 const cv = $('#char'), ctx = cv.getContext('2d');
@@ -801,14 +824,32 @@ let gaze = {x:0,y:0}, gazeT = {x:0,y:0}, nextGaze = 0, readStep = 0;
 let blink = 0, blinkStart = -1, nextBlink = 1500;
 let typing = true, phaseEnd = 2600, nextTap = 0;
 const off = document.createElement('canvas'), octx = off.getContext('2d');
-let dpr = 1, charVisible = true;
+const base = document.createElement('canvas'), bctx = base.getContext('2d');
+let dpr = 1, charVisible = true, baseReady = false;
+// Only this part of the picture ever changes (screen light, face, eyes, typing hands), in image pixels.
+const DIRTY = [300, 0, 630, 700];
+let RX = 0, RY = 0, RW = 1, RH = 1;
 
 function sizeChar(){
   const r = cv.getBoundingClientRect();
-  dpr = Math.min(2, devicePixelRatio || 1);
+  dpr = Math.min(1.5, devicePixelRatio || 1);
   cv.width = Math.max(1, Math.round(r.width * dpr));
   cv.height = Math.max(1, Math.round(r.height * dpr));
-  off.width = cv.width; off.height = cv.height;
+  base.width = cv.width; base.height = cv.height;
+  const s = cv.width / IMG_W;
+  RX = Math.floor(DIRTY[0] * s); RY = Math.floor(DIRTY[1] * s);
+  RW = Math.min(cv.width - RX, Math.ceil((DIRTY[0] + DIRTY[2]) * s) - RX + 1);
+  RH = Math.min(cv.height - RY, Math.ceil((DIRTY[1] + DIRTY[3]) * s) - RY + 1);
+  off.width = RW; off.height = RH;
+  baseReady = false;
+}
+function paintBase(){                                 // the still character, drawn once per size
+  if (!img.complete || !img.naturalWidth) return;
+  const s = cv.width / IMG_W;
+  bctx.setTransform(1,0,0,1,0,0); bctx.clearRect(0,0,base.width,base.height);
+  bctx.setTransform(s,0,0,s,0,0); bctx.drawImage(img, 0, 0, IMG_W, IMG_H);
+  ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(base, 0, 0);
+  baseReady = true;
 }
 const path = (c, pts) => { c.beginPath(); pts.forEach(([x,y],i) => i ? c.lineTo(x,y) : c.moveTo(x,y)); c.closePath(); };
 const rand = (a,b) => a + Math.random() * (b - a);
@@ -817,7 +858,11 @@ function drawFinger(f){
   ctx.save();
   ctx.translate(f.pivot[0], f.pivot[1]); ctx.rotate(f.v * f.max); ctx.translate(-f.pivot[0], -f.pivot[1]);
   path(ctx, f.poly); ctx.clip();
-  ctx.drawImage(img, 0, 0, IMG_W, IMG_H);
+  if (!f.box){ const xs = f.poly.map(p=>p[0]), ys = f.poly.map(p=>p[1]);
+    const x = Math.floor(Math.min(...xs)) - 14, y = Math.floor(Math.min(...ys)) - 14;
+    f.box = [x, y, Math.ceil(Math.max(...xs)) + 14 - x, Math.ceil(Math.max(...ys)) + 14 - y]; }
+  const [bx, by, bw, bh] = f.box;
+  const k = img.naturalWidth / IMG_W; ctx.drawImage(img, bx*k, by*k, bw*k, bh*k, bx, by, bw, bh);      // only the finger's own patch
   ctx.restore();
 }
 function drawEye(e, gx, gy, b){
@@ -851,7 +896,7 @@ function lightLayer(now){
   const s = cv.width / IMG_W;
   octx.setTransform(1,0,0,1,0,0); octx.globalCompositeOperation = 'source-over';
   octx.clearRect(0,0,off.width,off.height);
-  octx.setTransform(s,0,0,s,0,0);
+  octx.setTransform(s,0,0,s,-RX,-RY);
   const [r,g,b] = lightCol.map(Math.round);
   const grd = octx.createRadialGradient(690, 300, 10, 640, 300, 420);
   grd.addColorStop(0, `rgba(${r},${g},${b},${lightLevel})`);
@@ -861,7 +906,8 @@ function lightLayer(now){
   octx.globalCompositeOperation = 'destination-out';
   path(octx, LID); octx.fill();
   octx.globalCompositeOperation = 'destination-in';
-  octx.drawImage(img, 0, 0, IMG_W, IMG_H);
+  const k = img.naturalWidth / IMG_W;             // the file is smaller than the 930-wide drawing space
+  octx.drawImage(img, DIRTY[0]*k, DIRTY[1]*k, DIRTY[2]*k, DIRTY[3]*k, DIRTY[0], DIRTY[1], DIRTY[2], DIRTY[3]);
 }
 function easeTo(cur, tgt, k){ return cur + (tgt - cur) * k; }
 
@@ -870,7 +916,9 @@ function charTick(now){
   if (!charVisible) { charSleeping = true; return; }
   requestAnimationFrame(charTick);
   if (!img.complete || !img.naturalWidth) { lastC = now; return; }
-  if (now - lastDraw < 31) return; lastDraw = now;
+  if (window.__pauseAnim) return;
+  if (now - lastDraw < (document.documentElement.classList.contains('lite') ? 48 : 31)) return; lastDraw = now;
+  if (!baseReady) paintBase();
   const dt = Math.min(64, now - lastC); lastC = now; const t = now - t0;
 
   if (!reduce){
@@ -914,14 +962,16 @@ function charTick(now){
   }
 
   const s = cv.width / IMG_W;
-  ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,cv.width,cv.height);
+  // redraw only the changing area: clear it, lay the screen-light spill, then the cached still picture on top
+  ctx.save();
+  ctx.setTransform(1,0,0,1,0,0); ctx.beginPath(); ctx.rect(RX, RY, RW, RH); ctx.clip(); ctx.clearRect(RX, RY, RW, RH);
   ctx.setTransform(s,0,0,s,0,0);
-  // spill of screen light into the air above the lid
   const [r,g,b] = lightCol.map(Math.round);
   const sp = ctx.createRadialGradient(735, 300, 0, 735, 300, 150);
   sp.addColorStop(0, `rgba(${r},${g},${b},${.35*lightLevel})`); sp.addColorStop(1, `rgba(${r},${g},${b},0)`);
   ctx.fillStyle = sp; ctx.fillRect(585, 150, 300, 300);
-  ctx.drawImage(img, 0, 0, IMG_W, IMG_H);
+  ctx.setTransform(1,0,0,1,0,0); ctx.drawImage(base, RX, RY, RW, RH, RX, RY, RW, RH);
+  ctx.setTransform(s,0,0,s,0,0);
   if (plate.complete && plate.naturalWidth && (FA.v > 0 || FB.v > 0)) ctx.drawImage(plate, ...PLATE);
   drawFinger(FB); drawFinger(FA);
   drawEye(EYE_L, gaze.x, gaze.y, blink);
@@ -929,11 +979,12 @@ function charTick(now){
   // light on face / chest
   lightLayer(now);
   ctx.setTransform(1,0,0,1,0,0);
-  ctx.globalCompositeOperation = 'soft-light'; ctx.globalAlpha = .9; ctx.drawImage(off, 0, 0);
-  ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = .28; ctx.drawImage(off, 0, 0);
+  ctx.globalCompositeOperation = 'soft-light'; ctx.globalAlpha = .9; ctx.drawImage(off, RX, RY);
+  ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = .28; ctx.drawImage(off, RX, RY);
   ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+  ctx.restore();
 }
-img.addEventListener('load', sizeChar);
+img.addEventListener('load', () => { sizeChar(); paintBase(); });
 addEventListener('resize', sizeChar);
 sizeChar();
 requestAnimationFrame(charTick);
