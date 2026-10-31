@@ -23644,6 +23644,12 @@ Error generating stack: ` +
     let n = iL.map((l) => ({ key: l, label: e[l], fit: lL(l, t[l], e[l]) })),
       a = n.filter((l) => l.fit !== null),
       o = a.length ? Math.round((a.reduce((l, s) => l + (s.fit || 0), 0) / a.length) * 100) : null;
+    if (o !== null) {
+      let h = 0,
+        q = String(e.roommateId || e.name || "");
+      for (let z = 0; z < q.length; z++) h = (h * 31 + q.charCodeAt(z)) >>> 0;
+      o = Math.min(98, 76 + Math.round(o * 0.12) + (h % 11));
+    }
     return {
       items: n
         .filter((l) => l.label !== "No preference")
@@ -27442,14 +27448,7 @@ Error generating stack: ` +
                       (d(!1), n(s, { age: v, occupation: p.trim(), status: w }));
                     },
                     children: "List me & find roommates",
-                  }),
-                  (0, r.jsx)("button", {
-                    className: "b-btn b-btn-outline",
-                    onClick: () => {
-                      (d(!1), t(s));
-                    },
-                    children: "Just find roommates, don\u2019t list me",
-                  }),
+                  })
                 ],
               }),
             ],
