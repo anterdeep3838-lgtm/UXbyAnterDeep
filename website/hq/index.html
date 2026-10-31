@@ -144,7 +144,7 @@ function skeleton() {
 function paintMe() {
   const on = localStorage.getItem('ubad_me') === '1';
   $('#me').innerHTML = on ? 'Your visits from this browser are not counted. <a href="#" id="tg" style="color:var(--blue)">Count them</a>' : 'Visits from this browser are being counted. <a href="#" id="tg" style="color:var(--blue)">Stop counting them</a>';
-  $('#tg').onclick = e => { e.preventDefault(); on ? localStorage.removeItem('ubad_me') : localStorage.setItem('ubad_me', '1'); paintMe(); };
+  $('#tg').onclick = e => { e.preventDefault(); if (on) { localStorage.removeItem('ubad_me'); localStorage.setItem('ubad_count', '1'); } else { localStorage.setItem('ubad_me', '1'); localStorage.removeItem('ubad_count'); } paintMe(); };
 }
 
 /* ---------- render ---------- */
@@ -280,7 +280,7 @@ async function load() {
   if (!r.ok) { $('#body').innerHTML = '<div class="card"><b>Could not load stats.</b><div class="empty">Check that the Upstash database is connected to this project, then refresh.</div></div>'; return; }
   render(r.j);
 }
-function start() { skeleton(); load(); clearInterval(timer); timer = setInterval(() => { if (document.visibilityState === 'visible') load(); }, 60000); }
+function start() { try { if (localStorage.getItem('ubad_count') !== '1') localStorage.setItem('ubad_me', '1'); } catch (e) {} skeleton(); load(); clearInterval(timer); timer = setInterval(() => { if (document.visibilityState === 'visible') load(); }, 60000); }
 async function init() {
   const r = await api('/api/hq-login');
   if (r.j && r.j.authed) return start();
