@@ -142,7 +142,7 @@ body{background-image:url("assets/grain.png");background-size:180px}
 .stage::after{content:"";position:absolute;inset:auto 0 -90px;height:210px;background:linear-gradient(to bottom,transparent,var(--paper));z-index:4;pointer-events:none}
 
 .ring{position:absolute;left:0;right:0;top:0;height:calc(var(--stage-h,640px) * .86);z-index:1;perspective:var(--P,1000px);
-  touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;overflow:hidden;contain:layout paint}
+  touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;overflow:visible;clip-path:inset(-400px 0 -400px 0);contain:layout}
 .ring.dragging{cursor:grabbing}
 .ring-inner{position:absolute;left:50%;top:44%;width:0;height:0;transform-style:preserve-3d}
 .card{--px:40px;--pt:56px;--pb:72px;position:absolute;left:0;top:0;width:calc(var(--cw,230px) + var(--px) * 2);height:calc(var(--ch,306px) + var(--pt) + var(--pb));
