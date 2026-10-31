@@ -135,3 +135,16 @@ paths before running. Images were converted to `.webp` into `website/worth/`.
 ## 6. Outpace case study
 
 This case study is being built in 4 phases. `website/outpace.html` is generated from `outpace-case-study-source/deck/` with `python3 build.py`. See `outpace-case-study-source/README-OUTPACE.md` for its structure, fonts, colours and the green-screen mockup tools.
+
+## 7. Private visitor stats (owner only)
+
+`website/hq/` is a password-protected dashboard (open `/hq` on the live site). It is not linked from any page and is blocked from search engines.
+
+- `website/assets/a.js`: tiny cookie-free tracker loaded on every page (no IP addresses stored; skips your own browser once you have signed in to `/hq`, and never runs on localhost).
+- `website/api/c.js`: receives the page-view and page-exit beacons and stores them in Redis.
+- `website/api/hq-login.js`, `website/api/hq-data.js`: sign-in and the aggregated numbers for the dashboard.
+- `website/vercel.json`: the `/hq` rewrite and no-index headers.
+
+One-time setup in Vercel (Project > Storage / Settings): connect a free Upstash Redis database to the project, add the environment variable `ADMIN_PASSWORD`, then redeploy. Until then the tracker does nothing and `/hq` shows a short setup note.
+
+Tip: send people a tagged link like `/?for=priya-acme` and that label shows next to their visit in the dashboard.
