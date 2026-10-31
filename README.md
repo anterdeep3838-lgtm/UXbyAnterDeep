@@ -3,6 +3,17 @@
 A UI/UX design portfolio. Plain HTML, CSS and JavaScript. There is no framework and no bundler. Everything runs by opening `website/index.html` in a browser.
 
 **Live version (private Claude artifact):** https://claude.ai/artifact/AzM93jQTfNkEMEHHmjw2Y7
+
+## What's in this repository
+
+| Folder | What it holds |
+|---|---|
+| [`website/`](website/) | The portfolio site: home page and five case studies (Belong, KwicK, ResolveAI, Worth, Outpace) |
+| [`website/prototypes/`](website/prototypes/) | Ready-to-open working prototypes for Belong, KwicK and Worth |
+| [`prototype-source/`](prototype-source/) | Full source of the working prototypes for Belong, KwicK and ResolveAI, with start scripts |
+| [`worth-case-study-source/`](worth-case-study-source/) | Editable source for the Worth case study, including the working Worth app |
+| [`outpace-case-study-source/`](outpace-case-study-source/) | Editable source for the Outpace case study |
+| [`archive/`](archive/) | Old renders, an older page version and Outpace export zips. Not used by the site |
 **Contact shown on the site:** anterdeep3838@gmail.com · https://www.linkedin.com/in/anter-deep-021740393/
 
 ---
@@ -10,7 +21,7 @@ A UI/UX design portfolio. Plain HTML, CSS and JavaScript. There is no framework 
 ## 1. Folder map (start here)
 
 ```
-Portfolio website and case study/
+UXbyAnterDeep/
 ├── README.md                      <- this file (give this to any AI first)
 ├── website/                       <- THE SITE. Upload/serve this folder as-is.
 │   ├── index.html                 Home page: hero, project cards, about, contact
@@ -20,9 +31,11 @@ Portfolio website and case study/
 │   ├── worth.html                 Case study: Worth (GENERATED, see section 3)
 │   ├── outpace.html               Case study: Outpace (GENERATED, see outpace-case-study-source/README-OUTPACE.md)
 │   ├── assets/                    Home-page images (avatar, character, plate, wave)
-│   ├── belong/  kwick/  resolveai/  worth/
+│   ├── prototypes/                Working prototypes: belong/, kwick/, worth/ (index.html + app.html)
+│   ├── belong/  kwick/  resolveai/  worth/  outpace/
 │   │                              Images + fonts used by each case study page
 │   └── (each page references its folder with relative paths like worth/s-home.webp)
+├── prototype-source/              <- Source of the Belong, KwicK and ResolveAI prototypes (see its README)
 ├── outpace-case-study-source/     <- Editable source for the Outpace case study (in progress)
 ├── worth-case-study-source/       <- Editable source for the Worth case study
 │   ├── deck/                      head.html, p1-p4 .html/.css, foot.html, build.py
@@ -32,7 +45,11 @@ Portfolio website and case study/
 │   ├── composites/                Finished photo composites (webp) used in the deck
 │   ├── design-source-images/      Source images for composites and glass textures
 │   └── old-spendwise-reference/   Re-rendered old SpendWise screens (before/after)
-└── archive/                       Early scratch renders from the home page. Not used.
+└── archive/                       Not used by the site
+    ├── early-home-renders/        First scratch renders of the home page
+    ├── home-page-renders/         Later home-page screenshots (desktop and mobile)
+    ├── old-versions/              worth.pre-sharpness-20261029.html (older Worth page)
+    └── outpace-exports/           outpace-phase2.zip, outpace-phase3.zip
 ```
 
 Important: **do not move files inside `website/`.** HTML pages reference images by
