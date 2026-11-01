@@ -418,7 +418,7 @@ ul.pts li::before{content:"";position:absolute;left:3px;top:.6em;width:8px;heigh
 
 /* ---------- 12 DECISION 01b compare ---------- */
 .cmp .wrap{display:grid;grid-template-columns:1fr 640px;gap:70px;align-items:center}
-.slider{position:relative;width:420px;margin:0 auto;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.slider{position:relative;width:420px;margin:0 auto;user-select:none;-webkit-user-select:none;touch-action:pan-y pinch-zoom}
 .slider .phone{--ry:0deg;--rx:0deg;--w:420px}
 .slider .layer{position:absolute;inset:0;overflow:hidden}
 .slider .layer img{top:0}
@@ -882,7 +882,7 @@ ul.pts li::before{content:"";position:absolute;left:3px;top:.6em;width:8px;heigh
 .scrub .play svg{width:18px;height:18px;fill:#fff}
 .scrub .rail{position:relative;flex:1;height:56px}
 .scrub input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none;z-index:3}
-.scrub .rail{cursor:grab;touch-action:none}.scrub.drag .rail{cursor:grabbing}
+.scrub .rail{cursor:grab;touch-action:pinch-zoom}.scrub.drag .rail{cursor:grabbing}
 .scrub input[type=range]:active{cursor:grabbing}
 .scrub .trk{position:absolute;left:0;right:0;top:50%;height:6px;margin-top:-3px;border-radius:6px;background:rgba(26,21,20,.1)}
 .scrub .fil{position:absolute;left:0;top:50%;height:6px;margin-top:-3px;border-radius:6px;background:linear-gradient(90deg,var(--red),#E5483C)}
@@ -1461,8 +1461,10 @@ svg.wire .lbl text{font:600 13px var(--body);fill:var(--ink-2)}
 .ctas .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ctas .row .mag.w{height:66px;padding:0 24px 0 12px;gap:14px;font-size:18px}
 </style>
+<link rel="stylesheet" href="assets/case-responsive.css">
 </head>
 <body>
+<nav class="case-mobile-nav" aria-label="Case study navigation"><a href="index.html#work"><b aria-hidden="true">←</b>Portfolio</a><span>Pinch to zoom</span></nav>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <main class="deck" id="deck">

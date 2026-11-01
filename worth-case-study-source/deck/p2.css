@@ -119,7 +119,7 @@
 .ev-sc{position:relative;z-index:1;width:100%;height:100%;border-radius:calc(var(--w)*.135);overflow:hidden}
 .ev-sc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
 .ev-sc img.nw{clip-path:inset(0 0 0 var(--cx,50%))}
-.ev-h{position:absolute;z-index:4;top:4%;bottom:4%;left:var(--cx,50%);width:40px;margin-left:-20px;cursor:ew-resize;touch-action:none;outline:none}
+.ev-h{position:absolute;z-index:4;top:4%;bottom:4%;left:var(--cx,50%);width:40px;margin-left:-20px;cursor:ew-resize;touch-action:pinch-zoom;outline:none}
 .ev-h::before{content:"";position:absolute;left:19px;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.6)}
 .ev-h:focus-visible i{box-shadow:0 0 0 3px #9CBCFF,0 6px 20px rgba(0,0,0,.5)}
 .ev-h:hover i{transform:scale(1.1)}

@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta property="og:title" content="Anterdeep Singh | Product Designer">
 <meta property="og:description" content="Anterdeep Singh is a product designer working across UX strategy, user flows, interaction design and UI, with AI-assisted workflows.">
@@ -10,7 +13,7 @@
 <meta property="og:image:alt" content="Anterdeep Singh’s product design portfolio homepage">
 <script>try{var n=navigator;if((n.hardwareConcurrency&&n.hardwareConcurrency<=2)||(n.deviceMemory&&n.deviceMemory<=2))document.documentElement.classList.add('lite')}catch(e){}</script>
 <title>Anterdeep Singh Portfolio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Anterdeep Singh is a product designer working across UX strategy, user flows, interaction design and UI, with AI-assisted workflows.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +49,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;text-rendering:optimizeLegibility}
 body.locked{overflow:hidden}
 a{color:inherit}
@@ -228,7 +231,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.4vw,72px);l
 h3{font-size:17px;font-weight:600;margin:0 0 8px;letter-spacing:-.005em}
 
 /* about */
-#about{scroll-margin-top:40px;overflow-x:clip}
+#about{scroll-margin-top:88px;overflow-x:clip}
 .about-blob{position:absolute;right:-10%;top:12%;width:520px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(185,163,255,.4),transparent 100%);pointer-events:none;z-index:-1}
 .about-blob.b2{right:auto;left:-14%;top:72%;background:radial-gradient(closest-side,rgba(94,196,255,.19),transparent)}
 .about-top{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,5vw,80px);align-items:start}
@@ -277,7 +280,7 @@ h3{font-size:17px;font-weight:600;margin:0 0 8px;letter-spacing:-.005em}
 .chip svg{width:18px;height:18px;flex:none}
 
 /* contact cta */
-#contact{scroll-margin-top:40px}
+#contact{scroll-margin-top:88px}
 .cta-wrap{position:relative;padding-block:clamp(40px,6vw,80px) clamp(70px,9vw,120px)}
 .cta{position:relative;border-radius:36px;overflow:hidden;text-align:center;
   color:var(--ink);background:
@@ -394,8 +397,70 @@ footer{padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));border-to
 
 .zz,.zz *{animation-play-state:paused!important}
 html.lite .hero-bg i,html.lite .glow i{animation:none!important}
+
+/* Let compact screens browse every project without moving or obscured targets. */
+@media (max-width:1024px){
+  .nav ul a{min-height:44px;display:flex;align-items:center}
+  .nav .mail{width:44px;height:44px;flex:none}
+  .hero h1{font-size:clamp(28px,4.8vw,46px)}
+  .hero h1 .pen{white-space:normal}
+  .stage{--stage-h:600px;margin-top:20px}
+  .stage::after{display:none}
+  .stage .character{height:330px;bottom:254px}
+  .stage .floor{bottom:248px;width:210px}
+  .stage .glow{bottom:180px;height:350px}
+  .ring{top:auto;bottom:0;height:240px;perspective:none;clip-path:none;contain:none;overflow-x:auto;overflow-y:hidden;touch-action:pan-x pan-y;cursor:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+  .ring-inner{position:static;display:flex;gap:16px;width:max-content;height:100%;padding:4px var(--gutter) 10px;transform:none}
+  .ring .card{position:relative;flex:none;width:180px;height:220px;margin:0;transform:none!important;opacity:1!important;visibility:visible!important;pointer-events:auto;scroll-snap-align:start;scroll-snap-stop:normal}
+  .ring .card:nth-child(n+6){display:none}
+  .ring .card .in{inset:0 0 28px;filter:none;border-radius:18px}
+  .ring .card::before{inset:0 0 28px;border-radius:18px;box-shadow:none}
+  .ring .card::after{content:attr(data-title);position:absolute;bottom:0;left:2px;color:var(--ink);font:600 15px/1.4 var(--body)}
+  .ring .card:hover .in,.ring .card:focus-visible .in,.ring .card:hover::before{transform:none}
+  .peek{display:none}
+  .skills{height:auto!important}
+  .pit,.pit.live{position:relative;inset:auto;height:auto;min-height:240px;margin-top:28px;padding:0;display:flex;flex-wrap:wrap;align-content:center;gap:10px;overflow:visible}
+  .pit.live .chip{position:static;transform:none!important;max-width:100%;white-space:normal;height:auto;min-height:44px;padding:10px 16px}
+  .tiles{position:relative;inset:auto;display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+  .tile{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;--t:46px!important;flex:none;border-radius:14px;animation:none}
+  .tile::after{display:none}
+  .badge{max-width:100%;line-height:1.5}
+  .badge .dot{flex:none}
+  .cta-inner>*{min-width:0;max-width:100%}
+  .copy{min-height:44px;overflow-wrap:anywhere;line-height:1.4}
+  .copy code{min-width:0}
+  .copy svg{flex:none}
+  .toast{max-width:calc(100% - 32px);width:max-content;box-sizing:border-box;text-align:center}
+}
+@media (max-width:600px){
+  .hero{padding-top:108px}
+  .hero-copy{gap:24px}
+  .hero h1{font-size:clamp(28px,7.5vw,38px);line-height:1.18}
+  .hero .sub{max-width:36ch}
+  .section{padding-block:64px}
+  .pillar{grid-template-columns:36px minmax(0,1fr);gap:12px}
+  .pillar .ico{width:36px;height:36px;border-radius:12px}
+  .process li{padding-right:0}
+  .skills{padding:24px 16px}
+  .cta{padding-inline:20px}
+  .cta h2{font-size:clamp(32px,9vw,46px)}
+  .cta-links{gap:12px}
+  .soc{min-height:48px}
+  .foot a{min-height:44px}
+}
+@media (min-width:601px) and (max-width:1024px){
+  .hero-copy{max-width:780px}
+  .stage{--stage-h:640px}
+  .stage .character{height:360px;bottom:270px}
+  .stage .floor{bottom:264px}
+  .ring{height:256px}
+  .ring .card{width:200px;height:240px}
+  .cta{padding-inline:40px}
+}
 </style>
 
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.7 7.6 16.4 11.3 24 12 16.4 12.7 12.7 16.4 12 24 11.3 16.4 7.6 12.7 0 12 7.6 11.3 11.3 7.6 12 0Z"/></symbol>
@@ -603,10 +668,11 @@ const PROJECTS = [
   {id:'outpace', name:'Outpace',   cls:'c-outpace', art:'<b></b><b></b><b></b><b></b>'},
   {id:'worth',   name:'Worth',     cls:'c-worth',   art:'<s></s><s></s><s></s><s></s>'}
 ];
-const cardHTML = (p, tag='a') => `<${tag} class="card" ${tag==='a'?`href="#${p.id}" data-id="${p.id}" aria-label="Open ${p.name} case study"`:''} draggable="false"><span class="in ${p.cls}"><span class="art" aria-hidden="true">${p.art}</span><span class="face"><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5 17.5 6.5M8.5 6.5h9v9"/></svg></span><span class="name">${p.name}</span></span></span></${tag}>`;
+const cardHTML = (p, tag='a') => `<${tag} class="card" ${tag==='a'?`href="#${p.id}" data-id="${p.id}" data-title="${p.name}" aria-label="Open ${p.name} case study"`:''} draggable="false"><span class="in ${p.cls}"><span class="art" aria-hidden="true">${p.art}</span><span class="face"><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5 17.5 6.5M8.5 6.5h9v9"/></svg></span><span class="name">${p.name}</span></span></span></${tag}>`;
 
 /* ================= RING ================= */
 const ring = $('#ring'), inner = $('#ringInner');
+const compactProjects = matchMedia('(max-width:1024px)');
 const COPIES = 4, N = PROJECTS.length * COPIES, STEP = 360 / N;
 for (let i = 0; i < N; i++) inner.insertAdjacentHTML('beforeend', cardHTML(PROJECTS[i % PROJECTS.length]));
 const cards = [...inner.children];
@@ -624,6 +690,7 @@ function sizeRing(){
   layoutRing();
 }
 function layoutRing(){
+  if (compactProjects.matches) return;
   for (let i = 0; i < N; i++){
     let th = ((rot + i * STEP) % 360 + 540) % 360 - 180;
     const a = Math.abs(th);
@@ -637,6 +704,7 @@ function layoutRing(){
 }
 let last = performance.now(), ringVisible = true;
 function ringTick(now){
+  if (compactProjects.matches){ ringSleeping = true; return; }
   const dt = Math.min(.05, (now - last) / 1000); last = now;
   if (!dragging){
     if (hover){ vel = 0; } const target = hover ? 0 : auto;
@@ -651,7 +719,7 @@ let ringSleeping = false;
 let px = 0, moved = 0, lastMoveT = 0;
 let pressedCard = null;
 ring.addEventListener('pointerdown', e => {
-  if (e.button !== 0) return;
+  if (compactProjects.matches || e.button !== 0) return;
   pressedCard = e.target.closest('.card');           // remember exactly what was pressed
   if (pressedCard && e.pointerType !== 'touch') e.preventDefault(); // no focus on press, so the card stays put
   dragging = true; moved = 0; px = e.clientX; lastMoveT = performance.now(); vel = 0;
@@ -676,14 +744,19 @@ const endDrag = e => {
 };
 ring.addEventListener('pointerup', endDrag);
 ring.addEventListener('pointercancel', () => { dragging = false; pressedCard = null; ring.classList.remove('dragging'); });
-inner.addEventListener('click', e => { const c = e.target.closest('.card'); if (c){ e.preventDefault(); if (e.detail === 0) openCase(c.dataset.id, true); }});
+inner.addEventListener('click', e => { const c = e.target.closest('.card'); if (c){ e.preventDefault(); if (compactProjects.matches || e.detail === 0) openCase(c.dataset.id, true); }});
 inner.addEventListener('pointerover', e => { if (e.target.closest('.card') && e.pointerType === 'mouse'){ hover = true; vel = 0; } });
 inner.addEventListener('pointerout', e => { if (!e.relatedTarget || !e.relatedTarget.closest?.('.card')) hover = false; });
 cards.forEach((c,i) => c.addEventListener('focus', () => { // keyboard (Tab) only: bring focused card to front
-  if (!c.matches(':focus-visible')) return;          // a mouse/touch press must never rotate the ring
+  if (compactProjects.matches || !c.matches(':focus-visible')) return;          // a mouse/touch press must never rotate the ring
   rot = -i * STEP; vel = 0; hover = true; }));
 cards.forEach(c => c.addEventListener('blur', () => hover = false));
 addEventListener('resize', sizeRing);
+compactProjects.addEventListener('change', () => {
+  dragging = false; pressedCard = null; ring.classList.remove('dragging');
+  sizeRing();
+  if (!compactProjects.matches && ringSleeping && ringVisible){ ringSleeping = false; last = performance.now(); requestAnimationFrame(ringTick); }
+});
 sizeRing();
 requestAnimationFrame(ringTick);
 (() => {                                              // watch real frame times once; slow device -> lighter effects
@@ -1029,7 +1102,7 @@ const say = m => { toast.textContent = m; toast.classList.add('show'); clearTime
 $('#copyEmail').addEventListener('click', async () => {
   const txt = 'anterdeep3838@gmail.com';
   try { await navigator.clipboard.writeText(txt); say('Email copied'); }
-  catch { const r = document.createRange(); r.selectNodeContents($('#copyEmail code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); say('Email selected, press Ctrl+C to copy'); }
+  catch { const r = document.createRange(); r.selectNodeContents($('#copyEmail code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); say('Email selected — use your device’s Copy action'); }
 });
 
 /* case overlay */
@@ -1074,11 +1147,12 @@ if (location.hash.slice(1) === 'belong') location.replace('belong.html'); else i
 
 /* skills pit physics */
 const pit = $('#pit');
+const compactSkills = matchMedia('(max-width:1024px)');
 if (window.Matter && !reduce){
   const {Engine, Bodies, Composite, Runner, Mouse, MouseConstraint, Body} = Matter;
   let started = false;
   const start = () => {
-    if (started) return; started = true;
+    if (started || compactSkills.matches) return; started = true;
     const chips = [...pit.querySelectorAll('.chip')];
     const sizes = chips.map(c => [c.offsetWidth, c.offsetHeight]);
     const box = pit.closest('.skills'); box.style.height = box.offsetHeight + 'px';
@@ -1155,7 +1229,7 @@ if (window.Matter && !reduce){
     const prev = chips.map(() => '');
     let drawing = false;
     const draw = () => {
-      if (!pitOn){ drawing = false; return; }
+      if (!pitOn || compactSkills.matches){ drawing = false; return; }
       bodies.forEach((b, i) => {
         const [w, h] = sizes[i];
         const t = `translate(${(b.position.x - w/2).toFixed(1)}px,${(b.position.y - h/2).toFixed(1)}px) rotate(${b.angle.toFixed(3)}rad)`;
@@ -1163,10 +1237,11 @@ if (window.Matter && !reduce){
       });
       requestAnimationFrame(draw);
     };
-    wake = () => { runner.enabled = pitOn; if (pitOn && !drawing){ drawing = true; requestAnimationFrame(draw); } };
+    wake = () => { runner.enabled = pitOn && !compactSkills.matches; if (runner.enabled && !drawing){ drawing = true; requestAnimationFrame(draw); } };
     wake();
   };
   let pitOn = false, wake = () => {};
+  compactSkills.addEventListener('change', () => { if (pitOn) start(); wake(); });
   new IntersectionObserver(([e]) => { pitOn = e.isIntersecting; if (e.intersectionRatio >= .45) start(); wake(); }, {threshold:[0, .45]}).observe(pit);
 }
 })();
@@ -1200,3 +1275,6 @@ document.querySelectorAll('body > header, body > section, body > footer, main > 
 })();
 </script>
 <script src="/assets/a.js" defer></script>
+
+</body>
+</html>

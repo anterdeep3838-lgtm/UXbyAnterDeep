@@ -736,7 +736,7 @@ svg.wires .lbg{fill:#fff}
 .ovtabs button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .ovgrid{display:grid;grid-template-columns:420px 1fr;gap:60px;align-items:start}
 .ovph{display:flex;justify-content:center}
-.cmp{position:relative;width:360px;aspect-ratio:1170/2532;border-radius:52px;padding:11px;background:linear-gradient(135deg,#d8dbdb 0%,#8d9291 20%,#eef0ef 48%,#7c8180 75%,#c9cccb 100%);box-shadow:0 50px 80px -40px rgba(5,22,20,.55);user-select:none;touch-action:pan-y}
+.cmp{position:relative;width:360px;aspect-ratio:1170/2532;border-radius:52px;padding:11px;background:linear-gradient(135deg,#d8dbdb 0%,#8d9291 20%,#eef0ef 48%,#7c8180 75%,#c9cccb 100%);box-shadow:0 50px 80px -40px rgba(5,22,20,.55);user-select:none;touch-action:pan-y pinch-zoom}
 .cmp>img,.cmp .old{position:absolute;inset:11px;border-radius:42px;overflow:hidden}
 .cmp>img{width:calc(100% - 22px);height:calc(100% - 22px);object-fit:cover;object-position:top}
 .cmp .old{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
@@ -1696,8 +1696,10 @@ svg.wires .lbg{fill:#fff}
 .ovs{padding:0;background:none;border-radius:30px;overflow:hidden;box-shadow:0 0 0 1px rgba(5,22,20,.08),0 40px 60px -30px rgba(5,22,20,.55)}
 .ovs img{border-radius:30px}
 </style>
+<link rel="stylesheet" href="assets/case-responsive.css">
 </head>
 <body>
+<nav class="case-mobile-nav" aria-label="Case study navigation"><a href="index.html#work"><b aria-hidden="true">←</b>Portfolio</a><span>Pinch to zoom</span></nav>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <main class="deck" id="deck">
 

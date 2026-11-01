@@ -124,7 +124,7 @@
 /* ── 12 key user flows ── */
 .fl{min-height:1040px}
 .fl-h{font-size:110px;width:640px}
-.fl-dial{position:absolute;left:170px;top:520px;width:380px;height:380px;touch-action:none}
+.fl-dial{position:absolute;left:170px;top:520px;width:380px;height:380px;touch-action:pinch-zoom}
 .fl-dial svg{width:100%;height:100%;overflow:visible}
 .fl-arc{stroke-dasharray:25 100;transition:stroke-dasharray .5s var(--ease)}
 .fl-ticks line{stroke:rgba(255,236,224,.18);stroke-width:2}
