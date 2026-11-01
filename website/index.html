@@ -394,6 +394,15 @@ footer{padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));border-to
 
 .zz,.zz *{animation-play-state:paused!important}
 html.lite .hero-bg i,html.lite .glow i{animation:none!important}
+
+/* A wider, shallower play area on phones; only pills capture touch gestures. */
+.pit.live .chip{touch-action:none}
+@media(max-width:600px){
+ .skills{margin-left:-8px;margin-right:-8px;padding:22px 16px 0;border-radius:22px}
+ .skills-head h3{font-size:25px}
+ .pit{height:245px}
+ .chip{padding-inline:14px;font-size:14px;gap:7px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1136,6 +1145,40 @@ if (window.Matter && !reduce){
           Body.setVelocity(b, {x: b.velocity.x * k, y: b.velocity.y * k}); Body.setAngularVelocity(b, b.angularVelocity * .5);
           b.restitution = .51; clearTimeout(b._rt); b._rt = setTimeout(() => b.restitution = .2, 3000); } });   // same soft bounce as the first drop
     }
+
+    // Capture only pills: the empty area remains available for page scrolling.
+    {
+      let held = null, pointer = null, last = null, speed = {x:0,y:0};
+      const release = e => {
+        if (e.pointerId !== pointer || !held) return;
+        Body.setVelocity(held, e.type === 'pointercancel' ? {x:0,y:0} : speed);
+        held = null; pointer = null;
+      };
+      pit.addEventListener('pointerdown', e => {
+        if (e.pointerType === 'mouse' || pointer !== null) return;
+        const chip = e.target.closest('.chip'), i = chips.indexOf(chip);
+        if (i < 0) return;
+        e.preventDefault(); held = bodies[i]; pointer = e.pointerId;
+        bodies.forEach(b => Matter.Sleeping.set(b, false));
+        last = {x:e.clientX,y:e.clientY,t:performance.now()}; speed = {x:0,y:0};
+        chip.setPointerCapture(e.pointerId);
+      });
+      pit.addEventListener('pointermove', e => {
+        if (e.pointerId !== pointer || !held) return;
+        e.preventDefault();
+        const now = performance.now(), dt = Math.max(8,now-last.t);
+        const dx = e.clientX-last.x, dy = e.clientY-last.y;
+        speed = {x:Math.max(-18,Math.min(18,dx/dt*16.67)),y:Math.max(-18,Math.min(18,dy/dt*16.67))};
+        Body.setPosition(held,{x:Math.max(20,Math.min(W-20,held.position.x+dx)),y:Math.max(24,Math.min(H-24,held.position.y+dy))});
+        Body.setVelocity(held,{x:0,y:0});
+        last = {x:e.clientX,y:e.clientY,t:now};
+      });
+      pit.addEventListener('pointerup', release);
+      pit.addEventListener('pointercancel', release);
+      pit.addEventListener('lostpointercapture', release);
+      Matter.Events.on(engine,'beforeUpdate',()=>{if(held){Body.setVelocity(held,{x:0,y:0});held.force.y=0;}});
+    }
+
     const LIM = .32;
     // soft tilt limit: past LIM, steer the spin back toward flat instead of snapping the angle every frame (snapping made pills shake)
     Matter.Events.on(engine, 'afterUpdate', () => bodies.forEach(b => {
