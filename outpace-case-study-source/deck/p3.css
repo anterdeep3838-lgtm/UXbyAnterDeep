@@ -25,7 +25,7 @@
 .sw-track{position:absolute;inset:0;display:flex;align-items:center;padding-left:34px;background:var(--ember);color:#1a0603;font:800 italic 30px/1 var(--fd);letter-spacing:.02em;text-transform:uppercase;clip-path:inset(0 calc(100% - var(--x,0px)) 0 0)}
 .sw-track span{display:flex;align-items:center;gap:12px}
 .sw-track .ic{width:28px;height:28px}
-.sw-card{position:absolute;inset:0;display:flex;align-items:center;gap:22px;padding:0 24px 0 16px;background:linear-gradient(180deg,#1f1612,#170f0c);border:1px solid rgba(255,236,224,.1);border-radius:24px;transform:translateX(var(--x,0px));cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;outline:none}
+.sw-card{position:absolute;inset:0;display:flex;align-items:center;gap:22px;padding:0 24px 0 16px;background:linear-gradient(180deg,#1f1612,#170f0c);border:1px solid rgba(255,236,224,.1);border-radius:24px;transform:translateX(var(--x,0px));cursor:grab;touch-action:pan-y;user-select:none;outline:none}
 .sw-card:focus-visible{box-shadow:inset 0 0 0 2px var(--flare)}
 .sw.drag .sw-card{cursor:grabbing}
 .sw.anim .sw-card,.sw.anim .sw-track{transition:transform .45s var(--ease),clip-path .45s var(--ease)}
@@ -185,7 +185,7 @@
 .rp-body i{height:80px;border-radius:10px;background:linear-gradient(160deg,rgba(255,90,31,.25),var(--ink3))}
 .rp-frame.md .rp-body{grid-template-columns:repeat(2,1fr)}
 .rp-frame.sm .rp-body{grid-template-columns:1fr}
-.rp-grip{position:absolute;top:50%;left:calc(18px + var(--wpx,100%));margin:-28px 0 0 -14px;width:28px;height:56px;border-radius:10px;background:var(--ember);color:#1a0603;display:grid;place-items:center;cursor:ew-resize;touch-action:pinch-zoom}
+.rp-grip{position:absolute;top:50%;left:calc(18px + var(--wpx,100%));margin:-28px 0 0 -14px;width:28px;height:56px;border-radius:10px;background:var(--ember);color:#1a0603;display:grid;place-items:center;cursor:ew-resize;touch-action:none}
 .rp-grip .ic{width:18px;height:18px;transform:rotate(-90deg)}
 .rp-read{margin-top:16px;display:flex;gap:16px;align-items:baseline;font-size:18px;color:var(--bone2)}
 .rp-read b{font:800 italic 26px/1 var(--fd);text-transform:uppercase;color:var(--sun);white-space:nowrap}
