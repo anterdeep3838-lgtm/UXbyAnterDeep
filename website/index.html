@@ -96,7 +96,7 @@ body{background-image:url("assets/grain.png");background-size:180px}
 .hello:hover .wave{animation-duration:1s}
 @keyframes wave{0%,60%,100%{transform:rotate(0)}8%{transform:rotate(16deg)}16%{transform:rotate(-8deg)}24%{transform:rotate(16deg)}32%{transform:rotate(-4deg)}40%{transform:rotate(12deg)}50%{transform:rotate(0)}}
 .hero h1{font-family:var(--sans-display);font-weight:700;font-size:clamp(30px,3.4vw,54px);line-height:1.24;letter-spacing:-.035em;margin:0 auto;max-width:1060px;text-wrap:balance;color:var(--ink)}
-.hero h1 .ln{display:block}
+.hero h1 .ln{display:block;white-space:nowrap}
 .pen{position:relative;display:inline-block;white-space:nowrap}
 .pen svg{position:absolute;left:-2%;bottom:-.16em;width:104%;height:.36em;overflow:visible;z-index:-1}
 .pen path{fill:none;stroke:url(#peng);stroke-width:7;stroke-linecap:round;stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1.1s .9s var(--ease) forwards}
@@ -367,7 +367,7 @@ footer{padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));border-to
   .process li:nth-child(2) .n::after,.process li:nth-child(4) .n::after{display:none}
 }
 @media (max-width:720px){
-  .hero h1 .ln{display:inline}
+  .hero h1 .ln{display:inline;white-space:normal}
   .nav .status{display:none}
   .nav ul a{padding:7px 11px;font-size:13.5px}
   .pillars{grid-template-columns:1fr}
@@ -446,7 +446,7 @@ html.lite .hero-bg i,html.lite .glow i{animation:none!important}
     <div class="hero-bg" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="wrap hero-copy">
       <span class="hello reveal"><img class="wave" src="assets/wave.png" alt="" width="30" height="30"><span>Hi, I'm <b>Anterdeep</b></span></span>
-      <h1 class="reveal d1"><span class="ln">I design thoughtful <span class="pen">digital products,<svg viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="peng" x1="0" x2="1"><stop offset="0" stop-color="#FFC93C"/><stop offset=".5" stop-color="#FF7EB9"/><stop offset="1" stop-color="#4FB8FF"/></linearGradient></defs><path d="M4 15C40 7 92 5 136 8c22 1.5 42 4 60 7"/></svg></span> because figuring out the interface shouldn’t be the hardest part of your day.</span></h1>
+      <h1 class="reveal d1"><span class="ln">I design thoughtful <span class="pen">digital products,<svg viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="peng" x1="0" x2="1"><stop offset="0" stop-color="#FFC93C"/><stop offset=".5" stop-color="#FF7EB9"/><stop offset="1" stop-color="#4FB8FF"/></linearGradient></defs><path d="M4 15C40 7 92 5 136 8c22 1.5 42 4 60 7"/></svg></span></span> <span class="ln">because figuring out the interface</span> <span class="ln">shouldn’t be the hardest part of your day.</span></h1>
       <p class="sub reveal d2">I shape user journeys through deliberate UX decisions and use AI-assisted workflows to explore, prototype, and refine the UI.</p>
       <div class="actions reveal d3">
         <a class="btn btn-dark btn-lg" href="#contact">Get in touch <span class="arr"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;transform:rotate(135deg)"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a>
