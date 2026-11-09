@@ -207,6 +207,8 @@ body{background-image:url("assets/grain.png");background-size:180px}
 .c-worth{background:#1438C8 url(assets/card-worth.webp) center/cover no-repeat}
 .card .art{display:none}
 .card .in{color:#fff}
+.card .project-type{position:absolute;top:18px;right:18px;z-index:3;padding:5px 10px;border:1px solid rgba(255,255,255,.75);border-radius:8px;background:rgba(15,18,17,.8);color:#fff;font-family:var(--body);font-size:clamp(10px,calc(var(--cw,230px) * .045),13px);font-weight:500;line-height:1.2;letter-spacing:.04em;white-space:nowrap;pointer-events:none}
+.c-resolve .go{align-self:flex-start}
 .card .in .go{background:rgba(255,255,255,.22)}
 .card:hover .in .go{background:rgba(255,255,255,.34)}
 .card .name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -608,11 +610,11 @@ const $ = s => document.querySelector(s);
 const PROJECTS = [
   {id:'belong',  name:'Belong',    cls:'c-belong',  art:'<span></span><span></span><span></span>'},
   {id:'kwick',   name:'KwicK',     cls:'c-kwick',   art:''},
-  {id:'resolveai',name:'ResolveAI',cls:'c-resolve', art:'<i></i><i></i><i></i>'},
+  {id:'resolveai',name:'ResolveAI',cls:'c-resolve', category:'SAAS', art:'<i></i><i></i><i></i>'},
   {id:'outpace', name:'Outpace',   cls:'c-outpace', art:'<b></b><b></b><b></b><b></b>'},
   {id:'worth',   name:'Worth',     cls:'c-worth',   art:'<s></s><s></s><s></s><s></s>'}
 ];
-const cardHTML = (p, tag='a') => `<${tag} class="card" ${tag==='a'?`href="#${p.id}" data-id="${p.id}" aria-label="Open ${p.name} case study"`:''} draggable="false"><span class="in ${p.cls}"><span class="art" aria-hidden="true">${p.art}</span><span class="face"><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5 17.5 6.5M8.5 6.5h9v9"/></svg></span><span class="name">${p.name}</span></span></span></${tag}>`;
+const cardHTML = (p, tag='a') => `<${tag} class="card" ${tag==='a'?`href="#${p.id}" data-id="${p.id}" aria-label="Open ${p.name}${p.category ? ' ' + p.category : ''} case study"`:''} draggable="false"><span class="in ${p.cls}">${p.category ? `<span class="project-type">${p.category}</span>` : ''}<span class="art" aria-hidden="true">${p.art}</span><span class="face"><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5 17.5 6.5M8.5 6.5h9v9"/></svg></span><span class="name">${p.name}</span></span></span></${tag}>`;
 
 /* ================= RING ================= */
 const ring = $('#ring'), inner = $('#ringInner');
