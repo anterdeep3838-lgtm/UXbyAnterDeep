@@ -1,15 +1,19 @@
-
 </main>
 <script>
 (() => {
   document.documentElement.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const deck = document.getElementById('deck');
+  const placeBefore = (move, before) => deck.insertBefore(document.getElementById(move), document.getElementById(before));
+  placeBefore('s12', 's4');
+  placeBefore('s6', 's9');
+  placeBefore('s29', 's4');
   const fit = () => deck.style.setProperty('--k', Math.min(1, document.documentElement.clientWidth / 1640));
   fit(); addEventListener('resize', fit);
 
   const TOTAL = 31;
-  document.querySelectorAll('.tb[data-pg]').forEach(t => { const n = +t.dataset.pg;
+  [...deck.querySelectorAll(':scope > section')].forEach((section, index) => { const t = section.querySelector('.tb[data-pg]'); if (!t) return; const n = index + 1;
+    t.dataset.pg = n;
     t.querySelector('.pg').textContent = String(n).padStart(2, '0') + ' / ' + TOTAL;
     t.querySelector('.sp i').style.setProperty('--p', n / TOTAL); });
 
@@ -29,7 +33,7 @@
   // research: 45-app dot grid, category budgets lit on a minority
   const dots = document.getElementById('dots');
   if (dots) { const lit = [2, 7, 11, 16, 23, 29, 34, 38, 42, 13, 20, 26]; let s = ''; for (let i = 0; i < 45; i++) s += '<i></i>'; dots.innerHTML = s;
-    const ds = [...dots.children]; dots.lit = () => lit.forEach((k, j) => setTimeout(() => ds[k].classList.add('on'), 300 + j * 140)); }
+    const ds = [...dots.children]; lit.forEach(k => ds[k].classList.add('on')); }
 
   // count-up
   const count = el => { const end = +el.dataset.count; if (reduce) { el.textContent = end.toLocaleString('en-IN'); return; }
@@ -47,7 +51,7 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; el.classList.add('in'); io.unobserve(el);
     el.querySelectorAll?.('[data-count]').forEach(count);
     if (el.classList.contains('t-arc')) el.querySelectorAll('#arc line').forEach(l => l.style.opacity = 1);
-    if (el.classList.contains('t-dots') && dots) dots.lit(); }), {threshold: .18});
+     }), {threshold: .18});
   document.querySelectorAll('.r,.pop,.tb,.sc-arcs,.sc2-c,.dp-st').forEach(el => io.observe(el));
 
   // before/after slider — drag the white line (pointer or arrow keys)
@@ -69,57 +73,55 @@
     ls.forEach((l, k) => l.addEventListener('mouseenter', () => { ls.forEach(x => x.classList.remove('on')); l.classList.add('on'); i = k; }));
     if (!reduce) setInterval(() => { ls.forEach(x => x.classList.remove('on')); i = (i + 1) % ls.length; ls[i].classList.add('on'); }, 2600); }
 
-  // core journey: horizontal scrubber (Belong-style)
+  // core journey: manually selected, discrete steps
   const flData = document.getElementById('flData');
   if (flData) { const raw = JSON.parse(flData.textContent);
     const TXT = [
       ['Home', 'Taps the mic', 'Ashish starts on Home: this month’s overview, his latest Finly insight and recent payments.', 'Voice entry sits in the header, one tap from Home.', 0],
-      ['Add by voice', 'Says “Spent about 2k at Phoenix mall”', 'He can speak or type the same sentence. Sample phrases show what Worth understands.', 'Examples teach the format without a tutorial.', 0],
-      ['Review before saving', 'Taps “Review details”', 'Worth shows what it understood. Category and date are flagged “Check”, and nothing is saved yet.', 'Guesses are labelled, so the user stays in control.', 0],
-      ['Fix the guess', 'Picks Shopping', 'The amount and name carry over; he only fixes what Worth wasn’t sure about.', 'Smart defaults: Today and UPI are already selected.', 1],
+      ['Add by voice', 'Taps “Spent 300 rupees on food today”', 'He can speak, type, or tap a sample phrase. The suggestions show what Worth understands.', 'Examples teach the format without a tutorial.', 0],
+      ['Review before saving', 'Taps “Review details”', 'Worth shows what it understood: expense, ₹300, Food, Today. Nothing is saved yet.', 'The user confirms before anything is stored.', 0],
+      ['Confirm the category', 'Keeps Food selected', 'The amount carries over and Food is already picked, so there is nothing to fix.', 'Smart defaults: Today and UPI are already selected.', 1],
       ['Save', 'Taps “Save expense”', 'Every detail is visible on one screen before it is saved.', 'One primary action, always at the bottom.', 1],
       ['Saved', 'Taps “Done”', 'A printed receipt confirms exactly what was recorded.', 'A satisfying ending makes logging a habit.', 1],
-      ['Home updates', 'Taps Budget', 'The month’s overview updates at once, and Finly flags the jump in shopping.', 'Feedback arrives the moment a spend is logged.', 4],
-      ['Budget alert', 'Taps Analysis', 'Spending reaches 82% of ₹45,000, so the budget shows “Approaching limit” with a safe pace of ₹921 a day.', 'Alerts arrive before the limit, not after.', 2],
-      ['What stands out', 'Taps “Ask Finly about this month”', 'Analysis explains the month in sentences: food is 35% of spending and shopping is up sharply.', 'Insights in plain words, not just charts.', 3],
+      ['Home updates', 'Taps Budget', 'The overview updates at once, and Finly now says 93% of the Food budget is used.', 'Feedback arrives the moment a spend is logged.', 4],
+      ['Budget alert', 'Taps Analysis', 'Food shows “Approaching limit” while overall spending is still on track at 78% of ₹45,000.', 'Alerts arrive before the limit, not after.', 2],
+      ['What stands out', 'Taps “Ask Finly about this month”', 'Analysis explains the month in sentences: food is 37% of spending and shopping is up 439%.', 'Insights in plain words, not just charts.', 3],
       ['Ask Finly', 'Reads the answer', 'Finly explains the month from Ashish’s own data, with follow-up questions ready to tap.', 'Answers are grounded in the user’s transactions.', 4]];
-    const SH = ['Home','Voice','Review','Fix','Save','Receipt','Update','Alert','Insights','Finly'];
+    const SH = ['Home','Voice','Review','Category','Save','Receipt','Update','Alert','Insights','Finly'];
     const N = raw.length, $ = id => document.getElementById(id);
-    const rg = $('flRange'), th = $('flThumb'), fil = $('flFil'), tk = $('flTicks'), tap = $('flTap'), feats = [...$('flF').children];
+    const tap = $('flTap'), back = $('flBack'), again = $('flAgain'), feats = [...$('flF').children];
     raw.forEach((s, k) => { const img = new Image(); img.src = 'worth/f-' + s.img + '.webp'; });
-    tk.innerHTML = SH.map((s, k) => `<button type="button" style="left:${k / (N - 1) * 100}%"><i></i>${s}</button>`).join('');
-    const tbs = [...tk.children]; let cur = -1, front = 0, playing = false, pt;
+    let cur = -1, front = 0;
     const show = k => { if (k === cur) return; cur = k; const s = raw[k], t = TXT[k];
       const a = $('flI' + front), b = $('flI' + (1 - front)); b.src = 'worth/f-' + s.img + '.webp'; b.classList.remove('out'); a.classList.add('out'); front = 1 - front;
       $('flN').textContent = String(k + 1).padStart(2, '0'); $('flT').textContent = t[0]; $('flA').textContent = t[1]; $('flP').textContent = t[2]; $('flU').textContent = t[3];
       feats.forEach((f, j) => f.classList.toggle('on', j === t[4]));
       if (s.tap) { tap.classList.remove('off'); tap.style.left = s.tap[0] + '%'; tap.style.top = s.tap[1] + '%'; } else tap.classList.add('off');
-      tbs.forEach((b, j) => { b.classList.toggle('on', j === k); b.classList.toggle('done', j <= k); }); };
-    const pos = v => { const p = v / (N - 1) * 100; th.style.left = p + '%'; fil.style.width = p + '%'; show(Math.round(v)); };
-    rg.addEventListener('input', () => { $('flHint').style.opacity = 0; stop(); pos(+rg.value); });
-    rg.addEventListener('change', () => { rg.value = Math.round(rg.value); pos(+rg.value); });
-    tbs.forEach((b, k) => b.addEventListener('click', () => { stop(); rg.value = k; pos(k); }));
-    const ico = $('flIco'), PLAY = '<path d="M8 5v14l11-7z"/>', PAUSE = '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';
-    const stop = () => { playing = false; clearInterval(pt); ico.innerHTML = PLAY; $('flPlay').setAttribute('aria-label', 'Play the journey'); };
-    $('flPlay').addEventListener('click', () => { if (playing) return stop(); playing = true; ico.innerHTML = PAUSE; $('flPlay').setAttribute('aria-label', 'Pause the journey');
-      if (+rg.value >= N - 1) { rg.value = 0; pos(0); }
-      pt = setInterval(() => { const v = Math.round(+rg.value) + 1; if (v > N - 1) return stop(); rg.value = v; pos(v); }, 2600); });
-    pos(0); }
+      back.disabled = k === 0; again.hidden = k !== N - 1; tap.setAttribute('aria-label', s.tap ? 'Tap here to continue: ' + t[1] : ''); };
+    tap.setAttribute('role', 'button'); tap.tabIndex = 0;
+    const next = () => { if (cur < N - 1) show(cur + 1); };
+    tap.addEventListener('click', next); tap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } });
+    back.addEventListener('click', () => { if (cur > 0) show(cur - 1); }); again.addEventListener('click', () => show(0));
+    show(0); }
 
   // Money Left demo: Week / Month / Year
   const mld = document.getElementById('mld');
   if (mld) { const D = [
-      {r:'Oct 19 – 23', a:'4,664', p:61, l:'Weekly allowance', i:'₹12,013', e:'₹7,349', v:'Changes compared with Oct 12 – 16', il:'Allowance'},
-      {r:'Oct 1 – 23', a:'18,489', p:65, l:'Total income', i:'₹53,200', e:'₹34,711', v:'Changes compared with Sep 1 – 23', il:'Income'},
-      {r:'Jan 1 – Oct 23', a:'1,85,735', p:63, l:'Total income', i:'₹5,01,960', e:'₹3,16,225', v:'Changes compared with Jan 1 – Oct 23, 2025', il:'Income'}];
+      {r:'Oct 19 – 23', a:'4,664', p:61, l:'Weekly allowance', i:'₹12,013', e:'₹7,349', il:'Allowance'},
+      {r:'Oct 1 – 23', a:'18,489', p:65, l:'Total income', i:'₹53,200', e:'₹34,711', il:'Income'},
+      {r:'Jan 1 – Oct 23', a:'1,85,735', p:63, l:'Total income', i:'₹5,01,960', e:'₹3,16,225', il:'Income'}];
     const bs = [...mld.querySelectorAll('.ml-seg button')], th = mld.querySelector('.ml-seg i'), $$ = id => document.getElementById(id);
-    let k = 1, hold = false;
+    const eye = $$('mlEye'), amounts = [$$('mla'), $$('mli'), $$('mle')]; let k = 1, hold = false, hidden = false;
+    const applyPrivacy = () => { const d = D[k]; const dots = n => '<i class="dt"></i>'.repeat(n); amounts[0].innerHTML = hidden ? dots(6) : d.a; amounts[1].innerHTML = hidden ? dots(4) : d.i; amounts[2].innerHTML = hidden ? dots(4) : d.e;
+      eye.closest('.mc').classList.toggle('hid', hidden); eye.setAttribute('aria-pressed', hidden); eye.setAttribute('aria-label', hidden ? 'Show all amounts' : 'Hide all amounts');
+      eye.querySelectorAll('.eye-open').forEach(x => x.style.display = hidden ? 'none' : ''); eye.querySelector('.eye-off').style.display = hidden ? '' : 'none'; };
     const set = n => { k = n; const d = D[n], b = bs[n]; bs.forEach(x => x.classList.toggle('on', x === b));
       th.style.setProperty('--x', b.offsetLeft - 5 + 'px'); th.style.setProperty('--w', b.offsetWidth + 'px');
-      const a = $$('mla'); a.style.opacity = 0; setTimeout(() => { a.textContent = d.a; a.style.opacity = 1; }, 220);
+      const a = $$('mla'); a.style.opacity = 0; setTimeout(() => { applyPrivacy(); a.style.opacity = 1; }, 220);
       $$('mlr').textContent = d.r; $$('mlb').style.width = d.p + '%'; $$('mlp').textContent = 'Spent ' + d.p + '%'; $$('mll').textContent = d.l;
-      $$('mli').textContent = d.i; $$('mle').textContent = d.e; $$('mlv').textContent = d.v; mld.querySelector('.mc-tl span').textContent = d.il; };
+      applyPrivacy(); mld.querySelector('.mc-tl span').textContent = d.il; };
     bs.forEach((b, n) => b.addEventListener('click', () => { hold = true; set(n); }));
+    eye.addEventListener('click', () => { hold = true; hidden = !hidden; applyPrivacy(); });
     requestAnimationFrame(() => set(1));
     if (!reduce) setInterval(() => { if (!hold) set((k + 1) % 3); }, 3200); }
 
@@ -159,5 +161,6 @@
 <style>.zz,.zz *{animation-play-state:paused!important}</style>
 <script>/* perf: pause looping animations in slides that are off-screen */
 (()=>{if(!('IntersectionObserver' in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('zz',!e.isIntersecting)),{rootMargin:'200px 0px'});document.querySelectorAll('section').forEach(s=>io.observe(s));})();</script>
+<script src="/assets/a.js" defer></script>
 </body>
 </html>

@@ -65,7 +65,8 @@
 .lw-im img{width:86%;height:200px;object-fit:cover;object-position:50% 0;border-radius:16px;box-shadow:0 20px 40px -20px rgba(0,0,0,.9)}
 .lw-im.bt img{height:auto;object-fit:contain}
 .lw-g h3{font:500 25px/1.2 var(--f);margin:24px 26px 8px}
-.lw-g p{font:400 18px/1.45 var(--f);color:var(--tx2);margin:0 26px}
+.lw-g p{font:400 17.5px/1.42 var(--f);color:var(--tx2);margin:0 26px}
+.lw-g p b{color:#fff;font-weight:600}
 
 /* ---------- 27 typography ---------- */
 .ty{height:1080px;background:#1B1B1B}
@@ -281,7 +282,31 @@
 .it-im img{position:static!important;transform:none!important;box-shadow:none!important;height:auto;max-height:100%}
 .it-im figure{overflow:hidden}
 .lw-im{height:310px;padding:16px}
-.lw{height:1300px}
+.lw{height:1420px}
 .it-im{height:480px}
 .it{height:1330px}
 .rl{height:820px}
+
+/* iteration: labels off, Hick image down, flat pill palette, taller slide */
+.it-im figcaption{display:none}
+.lw-im img.hk{transform:none;margin:0;max-height:100%!important;object-fit:contain;object-position:center}
+.ty{height:1230px}
+.ty-ab{bottom:270px}
+.ty-pl{display:flex;gap:12px;bottom:64px}
+.ty-pl li{flex:1;flex-direction:row;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:999px;background:rgba(255,255,255,.05);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);font-size:15px;line-height:1.3}
+.ty-pl i{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.ty-pl i::after{display:none}
+.ty-pl li{display:grid;grid-template-columns:40px 1fr;column-gap:12px;align-items:center;min-width:0;padding:9px 16px 9px 9px;white-space:nowrap}
+.ty-pl i{grid-row:1/3;width:40px;height:40px}
+.ty-pl li span{grid-column:2;font-size:13.5px}
+
+/* Section titles lead; descriptive statements remain supporting text. */
+.sl .case-title{font:600 60px/1.08 var(--f);letter-spacing:-.025em;text-wrap:balance;margin-top:0}
+.sl .case-subtitle{font:400 23px/1.45 var(--f);color:var(--tx2);margin-top:16px;max-width:900px;text-wrap:pretty}
+.sl .case-subtitle b{font-weight:500}
+.ov .case-title{margin-top:0}
+.bs .case-title{margin-top:60px;max-width:1200px}
+.bs .case-subtitle{position:relative;z-index:2;max-width:1100px}
+.sl .research-static,.sl .research-static *,.sl .research-static *::before,.sl .research-static *::after{animation:none!important;transition:none!important}
+.sl .research-static .eq i{height:calc(var(--h)*1%)}
+.sl .research-static .ln i::after,.sl .research-static .ez i::after{transform:scaleX(1)}

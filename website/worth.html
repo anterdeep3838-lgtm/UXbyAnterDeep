@@ -1128,6 +1128,17 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 .ty-pl i{grid-row:1/3;width:40px;height:40px}
 .ty-pl li span{grid-column:2;font-size:13.5px}
 
+/* Section titles lead; descriptive statements remain supporting text. */
+.sl .case-title{font:600 60px/1.08 var(--f);letter-spacing:-.025em;text-wrap:balance;margin-top:0}
+.sl .case-subtitle{font:400 23px/1.45 var(--f);color:var(--tx2);margin-top:16px;max-width:900px;text-wrap:pretty}
+.sl .case-subtitle b{font-weight:500}
+.ov .case-title{margin-top:0}
+.bs .case-title{margin-top:60px;max-width:1200px}
+.bs .case-subtitle{position:relative;z-index:2;max-width:1100px}
+.sl .research-static,.sl .research-static *,.sl .research-static *::before,.sl .research-static *::after{animation:none!important;transition:none!important}
+.sl .research-static .eq i{height:calc(var(--h)*1%)}
+.sl .research-static .ln i::after,.sl .research-static .ez i::after{transform:scaleX(1)}
+
 </style>
 </head>
 <body>
@@ -1170,8 +1181,7 @@ svg{stroke-linecap:round;stroke-linejoin:round}
   <header class="tb r" data-pg="3"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">01 · Overview &amp; role</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <aside class="ov-in r" style="--d:.2s" aria-label="What is inside Worth"><p class="ov-ih">Inside Worth</p><ul><li><i><svg viewBox="0 0 24 24"><path d="M4 10.6 12 4.2l8 6.4v8.2a1.7 1.7 0 0 1-1.7 1.7H5.7A1.7 1.7 0 0 1 4 18.8Z"/></svg></i><div><b>Overview</b><span>Week, month and year, with Money Left up front</span></div></li><li><i><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></i><div><b>Add</b><span>Expenses, income and savings by tap or voice</span></div></li><li><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12V3.5M12 12l6 6"/></svg></i><div><b>Budgets</b><span>Category and overall limits with early alerts</span></div></li><li><i><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></i><div><b>Analysis</b><span>The month explained in plain sentences</span></div></li><li><i><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8h7a3 3 0 0 1 0 6H8"/></svg></i><div><b>Savings</b><span>Goals with progress you can see</span></div></li><li><i><svg viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4Z"/></svg></i><div><b>Finly AI</b><span>Ask anything about your own money</span></div></li></ul><p class="ov-if">Designed for young professionals who pay by UPI all day and want to know where it went.</p></aside>
   <div class="ov-l">
-    <p class="k r">01 · Project overview</p>
-    <h2 class="h2 r" style="--d:.1s">Track every rupee.<br><b>Grow every goal.</b></h2>
+    <h2 class="h2 case-title r" style="--d:.1s">Project Overview</h2>
     <p class="lead r" style="--d:.2s">Worth helps young professionals log payments by tap or voice, stay inside category budgets with early alerts, grow savings goals, and ask Finly AI about their money.</p>
     <dl class="ov-f">
       <div class="r" style="--d:.25s"><dt>My role</dt><dd>Product designer, end to end</dd></div>
@@ -1223,7 +1233,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl w5 spot" style="--sx:78%" id="s5" aria-label="Problem framing: who, what, where, why and how">
   <header class="tb r" data-pg="5"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">02 · Problem framing</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="w5-hd">
-    <div><p class="k r">4Ws + H</p><h2 class="h2 r" style="--d:.1s">Five questions that <b>shaped the brief.</b></h2></div>
+    <div><h2 class="h2 case-title r" style="--d:.1s">Problem Framing</h2>
+    <p class="case-subtitle r" style="--d:.15s">Five questions that shaped the brief.</p></div>
     <div class="w5-hmw r" style="--d:.2s"><span>How might we</span><p>Help people understand their everyday spending and stay within budget without the effort of manual tracking?</p></div>
   </div>
   <ol class="w5-l" id="w5">
@@ -1239,7 +1250,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl rs deep" id="s6" aria-label="Secondary research findings">
   <header class="tb r" data-pg="6"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">03 · Research</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="rs-hd">
-    <div><p class="k r">Secondary research</p><h2 class="h2 r" style="--d:.1s">What the research says about <b>everyday money.</b></h2></div>
+    <div><h2 class="h2 case-title r" style="--d:.1s">Secondary Research</h2>
+    <p class="case-subtitle r" style="--d:.15s">What the research says about everyday money.</p></div>
     <p class="lead r" style="--d:.2s">Six published studies on finance apps, spending and budgeting. Each finding shaped a part of Worth.</p>
   </div>
   <div class="rs-g">
@@ -1250,35 +1262,35 @@ svg{stroke-linecap:round;stroke-linejoin:round}
       <p class="rt-w">In Worth → a clear money overview on Home.</p>
       <p class="src">CGAP · 274 app users</p>
     </article>
-    <article class="rt t-eq r" style="--d:.2s">
+    <article class="rt t-eq research-static" style="--d:.2s">
       <div class="eq" id="eq" aria-hidden="true"></div>
-      <div class="rt-n"><span class="num" data-count="90">0</span>%+</div>
+      <div class="rt-n"><span class="num">90</span>%+</div>
       <p class="rt-p">of participants wanted <b>real-time feedback</b> on their spending.</p>
       <p class="rt-w">In Worth → budget alerts before a limit is reached.</p>
       <p class="src">CFPB</p>
     </article>
-    <article class="rt t-wave r" style="--d:.3s">
+    <article class="rt t-wave research-static" style="--d:.3s">
       <svg class="wave" viewBox="0 0 400 120" aria-hidden="true" preserveAspectRatio="none"><path class="wv a" d="M0 60 C 60 0, 140 0, 200 60 S 340 120, 400 60"/><path class="wv b" d="M0 60 C 60 120, 140 120, 200 60 S 340 0, 400 60"/></svg>
-      <div class="rt-n"><span class="num" data-count="4">0</span></div>
+      <div class="rt-n"><span class="num">4</span></div>
       <p class="rt-p">dimensions of financial well-being: <b>daily control, emergencies, goals and freedom</b>.</p>
       <p class="rt-w">In Worth → Home, Budget and Savings map to them.</p>
       <p class="src">CFPB, Financial well-being</p>
     </article>
-    <article class="rt t-ln r" style="--d:.35s">
+    <article class="rt t-ln research-static" style="--d:.35s">
       <div class="ln" aria-hidden="true"><i style="--v:.82"></i><i style="--v:.7"></i><i style="--v:.58"></i></div>
-      <div class="rt-n"><span class="num" data-count="285">0</span></div>
+      <div class="rt-n"><span class="num">285</span></div>
       <p class="rt-p">FinTech users showed that <b>ease of use and trust</b> drive the choice of a budgeting app.</p>
       <p class="rt-w">In Worth → voice entry and a quick central Add.</p>
       <p class="src">Savitha &amp; Hawaldar</p>
     </article>
-    <article class="rt t-dots r" style="--d:.45s">
+    <article class="rt t-dots research-static" style="--d:.45s">
       <div class="dots" id="dots" aria-hidden="true"></div>
-      <div class="rt-n"><span class="num" data-count="12">0</span> apps</div>
+      <div class="rt-n"><span class="num">12</span> apps</div>
       <p class="rt-p">reviewed: transaction tracking was common, <b>category budgets were not</b>.</p>
       <p class="rt-w">In Worth → a dedicated Budget section with category limits.</p>
       <p class="src">Alenazi &amp; Sas</p>
     </article>
-    <article class="rt t-ez r" style="--d:.55s">
+    <article class="rt t-ez research-static" style="--d:.55s">
       <div class="ez" aria-hidden="true"><span><i style="--v:.92"></i><em>Payment history</em></span><span><i style="--v:.38"></i><em>Complex concepts</em></span></div>
       <div class="rt-n sm">Clear beats complex</div>
       <p class="rt-p"><b>Payment history</b> was easy to understand; complex financial ideas were much harder.</p>
@@ -1292,7 +1304,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl pe spot" style="--sx:50%" id="s7" aria-label="User persona: Ashish Sharma">
   <header class="tb r" data-pg="7"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">03 · User persona</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="pe-hd">
-    <h2 class="h2 r">Meet the person behind<br>the <b>everyday money questions.</b></h2>
+    <h2 class="h2 case-title r" style="--d:.1s">User Persona</h2>
+    <p class="case-subtitle r" style="--d:.15s">Meet the person behind the everyday money questions.</p>
     <p class="lead r" style="--d:.15s">A proto-persona built from the research: the goals, habits and frustrations behind Worth's core features.</p>
   </div>
   <div class="pe-st">
@@ -1313,7 +1326,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 08 · 03 EMPATHY MAP -->
 <section class="sl em deep" id="s8" aria-label="Empathy map for Ashish">
   <header class="tb r" data-pg="8"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">03 · Empathy map</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="em-hd"><h2 class="h2 r">Inside <b>Ashish's month.</b></h2><p class="lead r" style="--d:.15s">What he says, thinks, does and feels about money, and the part of Worth that answers each.</p></div>
+  <div class="em-hd"><h2 class="h2 case-title r" style="--d:.1s">Empathy Map</h2>
+    <p class="case-subtitle r" style="--d:.15s">Inside Ashish's month.</p><p class="lead r" style="--d:.15s">What he says, thinks, does and feels about money, and the part of Worth that answers each.</p></div>
   <div class="em-map">
     <svg class="em-axes" viewBox="0 0 1400 640" aria-hidden="true" preserveAspectRatio="none"><path d="M700 0V640M0 320H1400" stroke="rgba(156,188,255,.5)" stroke-width="1.5" stroke-dasharray="4 10"/></svg>
     <div class="em-c pop" style="--d:.2s"><img loading="lazy" decoding="async" src="worth/ashish-bust.webp" alt="Ashish"></div>
@@ -1327,7 +1341,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 09 · 04 EXISTING SOLUTIONS -->
 <section class="sl ex2" id="s9" aria-label="Existing solutions and the opportunity">
   <header class="tb r" data-pg="9"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">04 · Existing solutions</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="ex2-hd"><div><p class="k r">04 · Existing solutions &amp; the opportunity</p><h2 class="h2 r" style="--d:.1s">Where everyday money tools <b>stop short.</b></h2></div><p class="lead r" style="--d:.2s">Four ways people manage money today. Each helps with one part; none brings recording, limits and answers together.</p></div>
+  <div class="ex2-hd"><div><h2 class="h2 case-title r" style="--d:.1s">Existing Solutions &amp; the Opportunity</h2>
+    <p class="case-subtitle r" style="--d:.15s">Where everyday money tools stop short.</p></div><p class="lead r" style="--d:.2s">Four ways people manage money today. Each helps with one part; none brings recording, limits and answers together.</p></div>
   <div class="ex2-b">
     <ol class="ex2-l" id="exl"><li class="r" style="--d:0.1s"><span class="ex-ix">01</span><span class="ex-ic"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 20h18"/></svg></span><h3>Bank apps</h3><p class="g"><i></i><span><em>Good at</em>Exact balance and payment history.</span></p><p class="s"><i></i><span><em>Stops short</em>No category budgets, and no warning <b>before</b> you overspend.</span></p></li><li class="r" style="--d:0.2s"><span class="ex-ix">02</span><span class="ex-ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><h3>Spreadsheets &amp; notes</h3><p class="g"><i></i><span><em>Good at</em>Fully flexible and custom.</span></p><p class="s"><i></i><span><em>Stops short</em>Every entry is <b>typed by hand</b>, so tracking fades.</span></p></li><li class="r" style="--d:0.3s"><span class="ex-ix">03</span><span class="ex-ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span><h3>Expense trackers</h3><p class="g"><i></i><span><em>Good at</em>Recording transactions.</span></p><p class="s"><i></i><span><em>Stops short</em>Category budgets are <b>not consistently supported</b> <span class="cite">(Alenazi &amp; Sas)</span>.</span></p></li><li class="r" style="--d:0.4s"><span class="ex-ix">04</span><span class="ex-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><h3>Full budgeting apps</h3><p class="g"><i></i><span><em>Good at</em>Detailed planning tools.</span></p><p class="s"><i></i><span><em>Stops short</em>Setup-heavy, and budgets are <b>rarely checked while spending</b> <span class="cite">(CFPB)</span>.</span></p></li></ol>
     <svg class="ex2-fl" viewBox="0 0 120 600" preserveAspectRatio="none" aria-hidden="true"><path d="M0 75 C 60 75, 60 300, 120 300"/><path d="M0 225 C 60 225, 60 300, 120 300"/><path d="M0 375 C 60 375, 60 300, 120 300"/><path d="M0 525 C 60 525, 60 300, 120 300"/></svg>
@@ -1350,8 +1365,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl sg" id="s11" aria-label="Product strategy and scope">
   <header class="tb r" data-pg="11"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">06 · Strategy &amp; scope</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="sg-hd">
-    <p class="k r">06 · Product strategy</p>
-    <h2 class="h2 r" style="--d:.1s">Three priorities that<br><b>shaped the scope.</b></h2>
+    <h2 class="h2 case-title r" style="--d:.1s">Product Strategy</h2>
+    <p class="case-subtitle r" style="--d:.15s">Three priorities that shaped the scope.</p>
     <p class="lead r" style="--d:.2s">Every feature had to make money easier to record, keep in check, or understand. Everything else waited.</p>
   </div>
   <div class="sg-orb" aria-hidden="true"></div>
@@ -1368,7 +1383,7 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 12 · DESIGN PROCESS -->
 <section class="sl dp spot" style="--sx:60%" id="s12" aria-label="Design process">
   <header class="tb r" data-pg="12"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">Design process</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="dp-hd"><h2 class="h2 r">From a simple tracker<br>to a <b>clearer money app.</b></h2><p class="lead r" style="--d:.15s">Six steps, with one honest look back at the first version before the redesign.</p></div>
+  <div class="dp-hd"><h2 class="h2 case-title r" style="--d:.1s">Design Process</h2><p class="lead r" style="--d:.15s">Six steps, with one honest look back at the first version before the redesign.</p></div>
   <div class="dp-st" id="dp">
     <div class="dp-row" aria-hidden="true"></div>
     <div class="dp-s up" style="--x:6%;--i:0"><i class="bar"></i><div class="lab"><b class="sq"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></b><span>Research</span></div><p>Six studies on spending, budgeting and finance apps.</p></div>
@@ -1384,8 +1399,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl ev deep" id="s13" aria-label="Product evolution: SpendWise to Worth">
   <header class="tb r" data-pg="13"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">07 · Product evolution</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="ev-l">
-    <p class="k r">07 · Product evolution</p>
-    <h2 class="h2 r" style="--d:.1s">SpendWise <span class="ev-ar">→</span> <b>Worth.</b></h2>
+    <h2 class="h2 case-title r" style="--d:.1s">Product Evolution</h2>
+    <p class="case-subtitle r" style="--d:.15s">SpendWise <span class="ev-ar">→</span> Worth.</p>
     <p class="lead r" style="--d:.2s">SpendWise worked, but every element spoke at the same volume. Worth gives the answer room and lets the rest support it.</p>
     <div class="ev-cmp r" id="cmp" style="--d:.25s">
       <div class="ev-ph">
@@ -1406,7 +1421,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 14 · 07 EVOLUTION: ACROSS THE APP -->
 <section class="sl ga spot" style="--sx:25%" id="s14" aria-label="What changed across the app">
   <header class="tb r" data-pg="14"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">07 · Product evolution</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="ga-hd"><h2 class="h2 r">What changed <b>across the app.</b></h2><p class="lead r" style="--d:.15s">Five areas, each moved from showing everything at once to showing the next useful thing.</p></div>
+  <div class="ga-hd"><h2 class="h2 case-title r" style="--d:.1s">What Changed Across the App</h2>
+    <p class="case-subtitle r" style="--d:.15s">What changed across the app.</p><p class="lead r" style="--d:.15s">Five areas, each moved from showing everything at once to showing the next useful thing.</p></div>
   <ol class="ga-l">
     <li style="--o:0"><span class="ga-a r">Add transaction</span><p class="ga-old r" style="--d:.1s">One long form: amount, eight categories, description, date, payment, note and repeat, all on one page.</p><p class="ga-new r" style="--d:.2s"><b>Two calm steps.</b> Amount first on a calculator keypad, then details. Voice entry shows what it heard before saving.</p></li>
     <li style="--o:1"><span class="ga-a r">Analysis</span><p class="ga-old r" style="--d:.15s">Three stat tiles, a donut and weekly bars, each telling part of the story.</p><p class="ga-new r" style="--d:.25s"><b>One answer first.</b> What you spent, the daily average and a fair comparison with the same days last period.</p></li>
@@ -1423,7 +1439,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 15 · 08 CORE JOURNEY -->
 <section class="sl fl deep" id="s15" aria-label="Core user journey, interactive">
   <header class="tb r" data-pg="15"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">08 · Core journey</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="fl-hd"><div><p class="k r">08 · Core journey</p><h2 class="h2 r" style="--d:.1s">Walk the flow <b>yourself.</b></h2></div><p class="lead r" style="--d:.2s">Ashish logs a ₹300 food spend by voice, sees his Food budget near its limit and asks Finly what changed. Tap the blue ring to move to the next screen, just like in the app.</p></div>
+  <div class="fl-hd"><div><h2 class="h2 case-title r" style="--d:.1s">Core User Journey</h2>
+    <p class="case-subtitle r" style="--d:.15s">Walk the flow yourself.</p></div><p class="lead r" style="--d:.2s">Ashish logs a ₹300 food spend by voice, sees his Food budget near its limit and asks Finly what changed. Tap the blue ring to move to the next screen, just like in the app.</p></div>
   <div class="fl-st">
     <div class="fl-info" aria-live="polite">
       <div class="fl-n"><span id="flN">01</span><small>of 10</small></div>
@@ -1444,7 +1461,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 16 · 09 INFORMATION ARCHITECTURE -->
 <section class="sl ia2 spot" style="--sx:50%" id="s16" aria-label="Information architecture and navigation">
   <header class="tb r" data-pg="16"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">09 · Information architecture</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="ia2-hd"><div><p class="k r">09 · IA &amp; navigation</p><h2 class="h2 r" style="--d:.1s">Five sections, <b>one dock.</b></h2></div><p class="lead r" style="--d:.2s">Add sits in the centre because it's the most frequent action. Profile and Settings open from the avatar on Home, and Finly is one tap from Home and Analysis.</p></div>
+  <div class="ia2-hd"><div><h2 class="h2 case-title r" style="--d:.1s">Information Architecture &amp; Navigation</h2>
+    <p class="case-subtitle r" style="--d:.15s">Five sections, one dock.</p></div><p class="lead r" style="--d:.2s">Add sits in the centre because it's the most frequent action. Profile and Settings open from the avatar on Home, and Finly is one tap from Home and Analysis.</p></div>
   <div class="ia2-dock r" style="--d:.1s"><span class="ia2-t"><i><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9H4z"/></svg></i>Home</span><span class="ia2-t"><i><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></i>Analysis</span><span class="ia2-t add"><i><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></i>Add</span><span class="ia2-t"><i><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-9z"/></svg></i>Budget</span><span class="ia2-t"><i><svg viewBox="0 0 24 24"><path d="M5 11a7 7 0 0 1 13-3h2v4h-1.5A7 7 0 0 1 15 17v3h-3v-2h-2v2H7v-3.5A7 7 0 0 1 5 11Z"/></svg></i>Savings</span></div>
   <div class="ia2-ln" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="ia2-g"><div class="ia2-c r" style="--d:0.15s"><ul><li>Week, month and year overview</li><li>Income and expenses</li><li>Finly insight</li><li>Recent → full history</li><li>Search and notifications</li></ul><p class="ia2-x">Avatar → Profile &amp; Settings</p></div><div class="ia2-c r" style="--d:0.23s"><ul><li>Expenses or income</li><li>Spending trend</li><li>What stands out</li><li>Where it went, by category</li></ul><p class="ia2-x">Ask Finly about this month</p></div><div class="ia2-c add r" style="--d:0.31s"><ul><li>Expense, income or savings</li><li>Keypad that does the maths</li><li>Details and category</li><li>Voice, with review</li></ul><p class="ia2-x">Receipt confirmation</p></div><div class="ia2-c r" style="--d:0.39s"><ul><li>Overall limit and daily pace</li><li>Category budgets</li><li>Edit limit</li></ul><p class="ia2-x">Alerts at 70, 80 or 90%</p></div><div class="ia2-c r" style="--d:0.47s"><ul><li>Total saved</li><li>Goals and progress</li><li>Monthly amount to finish</li></ul><p class="ia2-x">Add money · New goal</p></div></div>
@@ -1454,8 +1472,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <section class="sl db spot" style="--sx:50%" id="s17" aria-label="Dashboard hierarchy">
   <header class="tb r" data-pg="17"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">10 · Dashboard</span><span class="sp"><i></i></span><span class="pg"></span></header>
   <div class="db-hd">
-    <div><p class="k r">10 · Dashboard hierarchy</p>
-    <h2 class="h2 r" style="--d:.1s">Answer first, <b>detail last.</b></h2></div>
+    <div><h2 class="h2 case-title r" style="--d:.1s">Dashboard Hierarchy</h2>
+    <p class="case-subtitle r" style="--d:.15s">Answer first, detail last.</p></div>
     <p class="lead r" style="--d:.2s">Home reads top to bottom like a sentence: the period, the answer, the reason, the next step, then the detail.</p>
   </div>
   <div class="db-ph pop" style="--d:.2s"><div class="iph" style="--w:330px"><img loading="lazy" decoding="async" src="worth/s-h-home.webp" alt="Worth Home screen with Money Left ₹18,489"><span class="gl"></span></div></div>
@@ -1531,7 +1549,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 21 · 12 ANALYSIS -->
 <section class="sl an spot" style="--sx:70%" id="s21" aria-label="Spending analysis">
   <header class="tb r" data-pg="21"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">12 · Analysis</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="an-hd"><div><p class="k r">12 · Analysis</p><h2 class="h2 r" style="--d:.1s">Spending patterns,<br><b>explained simply.</b></h2></div><p class="lead r" style="--d:.2s">Analysis leads with one answer, then shows where the money went. Every comparison uses the same days of the last period.</p></div>
+  <div class="an-hd"><div><h2 class="h2 case-title r" style="--d:.1s">Spending Analysis</h2>
+    <p class="case-subtitle r" style="--d:.15s">Spending patterns, explained simply.</p></div><p class="lead r" style="--d:.2s">Analysis leads with one answer, then shows where the money went. Every comparison uses the same days of the last period.</p></div>
   <div class="an-g">
     <article class="at a1 r" style="--d:.1s">
       <svg class="an-ch" viewBox="0 0 700 220" preserveAspectRatio="none" aria-hidden="true">
@@ -1568,7 +1587,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 22 · 12 BUDGETS & SAVINGS -->
 <section class="sl bs spot" style="--sx:50%" id="s22" aria-label="Budgets and savings">
   <header class="tb r" data-pg="22"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">12 · Budgets &amp; savings</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <h2 class="bs-h r">Goals that become <b>a plan</b>.<br>Budgets that keep <b>pace</b>.</h2>
+  <h2 class="h2 case-title bs-h r" style="--d:.1s">Budgets &amp; Savings</h2>
+    <p class="case-subtitle r" style="--d:.15s">Goals that become a plan. Budgets that keep pace.</p>
   <div class="bs-ring" aria-hidden="true"><i></i></div>
   <div class="bs-p1 pop" style="--d:.2s"><div class="iph" style="--w:280px"><img loading="lazy" decoding="async" src="worth/s-h-sav.webp" alt="Worth Savings: ₹96,900 saved across three goals"><span class="gl"></span></div></div>
   <div class="bs-p2 pop" style="--d:.35s"><div class="iph" style="--w:280px"><img loading="lazy" decoding="async" src="worth/s-h-budget.webp" alt="Worth Budget: 77% of ₹45,000 used, on track, ₹1,143 a day"><span class="gl"></span></div></div>
@@ -1579,14 +1599,16 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 23 · EVERY SCREEN (looping carousel) -->
 <section class="sl cr" id="s23" aria-label="Every Worth screen">
   <header class="tb r" data-pg="23"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">The product</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="cr-hd"><h2 class="h2 r">Every screen, <b>one calm system.</b></h2><p class="lead r" style="--d:.1s">The same type, spacing, cards and blue accent from Home to Settings.</p></div>
+  <div class="cr-hd"><h2 class="h2 case-title r" style="--d:.1s">The Product</h2>
+    <p class="case-subtitle r" style="--d:.15s">Every screen, one calm system.</p><p class="lead r" style="--d:.1s">The same type, spacing, cards and blue accent from Home to Settings.</p></div>
   <div class="cr-v" id="cr" aria-hidden="true"><div class="cr-t"></div></div>
 </section>
 
 <!-- 24 · 13 KEY DECISIONS -->
 <section class="sl dc spot" style="--sx:70%" id="s24" aria-label="Key design decisions and trade-offs">
   <header class="tb r" data-pg="24"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">13 · Key decisions</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="dc-hd"><div><p class="k r">13 · Key decisions &amp; trade-offs</p><h2 class="h2 r" style="--d:.1s">Four choices that <b>shaped Worth.</b></h2></div><p class="lead r" style="--d:.2s">Each one gave up something small to make recording, understanding and staying on budget easier.</p></div>
+  <div class="dc-hd"><div><h2 class="h2 case-title r" style="--d:.1s">Key Design Decisions &amp; Trade-offs</h2>
+    <p class="case-subtitle r" style="--d:.15s">Four choices that shaped Worth.</p></div><p class="lead r" style="--d:.2s">Each one gave up something small to make recording, understanding and staying on budget easier.</p></div>
   <div class="dc-g">
     <article class="r" style="--d:.1s">
       <div class="dc-v vf" aria-hidden="true"><span class="orb"></span><span class="bb q">Why did my expenses rise?</span><span class="bb a">Shopping is up ₹3,909 vs last month.</span></div>
@@ -1614,7 +1636,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 25 · 14 ITERATIONS -->
 <section class="sl it deep" id="s25" aria-label="Major iterations">
   <header class="tb r" data-pg="25"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">14 · Iterations</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="it-hd"><div><p class="k r">14 · UX approach &amp; iterations</p><h2 class="h2 r" style="--d:.1s">Three iterations, <b>up close.</b></h2></div><p class="lead r" style="--d:.2s">Where I started, what I noticed, what I changed, and why the new version works better.</p></div>
+  <div class="it-hd"><div><h2 class="h2 case-title r" style="--d:.1s">UX Approach &amp; Iterations</h2>
+    <p class="case-subtitle r" style="--d:.15s">Three iterations, up close.</p></div><p class="lead r" style="--d:.2s">Where I started, what I noticed, what I changed, and why the new version works better.</p></div>
   <div class="it-g">
     <article class="r" style="--d:.1s">
       <div class="it-im"><figure class="o"><img loading="lazy" decoding="async" src="worth/x-o-add.webp" alt="SpendWise: the complete Add transaction form on one page"><figcaption>SpendWise</figcaption></figure><figure class="n"><img loading="lazy" decoding="async" src="worth/x-n-add.webp" alt="Worth: the amount step with a calculator keypad"><figcaption>Worth</figcaption></figure></div>
@@ -1637,7 +1660,8 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 <!-- 26 · UX LAWS -->
 <section class="sl lw spot" style="--sx:50%" id="s26" aria-label="UX laws applied in Worth">
   <header class="tb r" data-pg="26"><span class="br"><img loading="lazy" decoding="async" src="worth/logo.webp" alt="">Worth</span><span class="sec">UX laws</span><span class="sp"><i></i></span><span class="pg"></span></header>
-  <div class="lw-hd"><div><p class="k r">UX laws in practice</p><h2 class="h2 r" style="--d:.1s">Six principles, <b>built into the screens.</b></h2></div><p class="lead r" style="--d:.2s">Each law is shown where it lives in the Worth prototype.</p></div>
+  <div class="lw-hd"><div><h2 class="h2 case-title r" style="--d:.1s">UX Laws in Practice</h2>
+    <p class="case-subtitle r" style="--d:.15s">Six principles, built into the screens.</p></div><p class="lead r" style="--d:.2s">Each law is shown where it lives in the Worth prototype.</p></div>
   <div class="lw-g">
     <article class="r" style="--d:0.10s"><div class="lw-im"><img loading="lazy" decoding="async" src="worth/x-n-voice.webp" alt="Voice review in Add by voice"></div><h3>Postel's law</h3><p><b>What it is:</b> Accept flexible input, but return a clear and consistent result.<br><b>In Worth:</b> Voice accepts phrases like “about 2k”, then presents a structured result to review.</p></article>
     <article class="r" style="--d:0.15s"><div class="lw-im"><img loading="lazy" decoding="async" src="worth/x-n-dock.webp" alt="Floating dock with the central Add button"></div><h3>Fitts's law</h3><p><b>What it is:</b> Important actions should be large and easy to reach.<br><b>In Worth:</b> Add is the dock's largest target and sits directly under the thumb.</p></article>
@@ -1788,7 +1812,7 @@ svg{stroke-linecap:round;stroke-linejoin:round}
   // research: 45-app dot grid, category budgets lit on a minority
   const dots = document.getElementById('dots');
   if (dots) { const lit = [2, 7, 11, 16, 23, 29, 34, 38, 42, 13, 20, 26]; let s = ''; for (let i = 0; i < 45; i++) s += '<i></i>'; dots.innerHTML = s;
-    const ds = [...dots.children]; dots.lit = () => lit.forEach((k, j) => setTimeout(() => ds[k].classList.add('on'), 300 + j * 140)); }
+    const ds = [...dots.children]; lit.forEach(k => ds[k].classList.add('on')); }
 
   // count-up
   const count = el => { const end = +el.dataset.count; if (reduce) { el.textContent = end.toLocaleString('en-IN'); return; }
@@ -1806,7 +1830,7 @@ svg{stroke-linecap:round;stroke-linejoin:round}
   const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; el.classList.add('in'); io.unobserve(el);
     el.querySelectorAll?.('[data-count]').forEach(count);
     if (el.classList.contains('t-arc')) el.querySelectorAll('#arc line').forEach(l => l.style.opacity = 1);
-    if (el.classList.contains('t-dots') && dots) dots.lit(); }), {threshold: .18});
+     }), {threshold: .18});
   document.querySelectorAll('.r,.pop,.tb,.sc-arcs,.sc2-c,.dp-st').forEach(el => io.observe(el));
 
   // before/after slider — drag the white line (pointer or arrow keys)

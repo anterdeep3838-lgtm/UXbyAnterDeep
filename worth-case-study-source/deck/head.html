@@ -13,9 +13,9 @@
 @font-face{font-family:"InterW";src:url(worth/inter-SemiBold.woff) format("woff");font-weight:600;font-display:swap}
 @font-face{font-family:"Urbanist";src:url(worth/urbanist.woff2) format("woff2");font-weight:100 900;font-display:swap}
 /* Worth deck — fixed 1600px canvas scaled to the viewport.
-   Theme #181818, accent = Worth blue #4D84FF (used sparingly). Type: Urbanist throughout. */
+   Theme #111111, accent = Worth blue #4D84FF (used sparingly). Type: Urbanist throughout. */
 :root{
-  --bg:#181818;--bg2:#1E1E1E;--bg3:#141414;--card:#3A3A3A;--card2:#424242;
+  --bg:#111111;--bg2:#171717;--bg3:#0D0D0D;--card:#1D1D1D;--card2:#242424;
   --tx:#F5F5F3;--tx2:#C9CBCF;--tx3:#A3A6AB;--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.16);
   --blue:#4D84FF;--blue-hi:#9CBCFF;--blue-lo:#2350E6;--mint:#8FDCA8;--coral:#F4806F;--amber:#F2B266;--teal:#5FD3C7;
   --bgrad:linear-gradient(150deg,#5f8cf0 0%,#2f62e6 45%,#1a3bb5 100%);
@@ -25,7 +25,7 @@
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
-html,body{background:#101010}
+html,body{background:#111111}
 body{margin:0;color:var(--tx);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 img{display:block;max-width:100%}
@@ -106,5 +106,4 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 </head>
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
-<nav class="backbar" aria-label="Back"><a href="index.html"><i aria-hidden="true">&larr;</i>Portfolio</a></nav>
 <main class="deck" id="deck">

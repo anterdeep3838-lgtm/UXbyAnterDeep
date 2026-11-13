@@ -75,9 +75,9 @@ svg{stroke-linecap:round;stroke-linejoin:round}
 .th .dg{font:100 196px/.74 var(--disp);letter-spacing:-.03em;color:var(--ink);display:block;overflow:hidden;padding-top:6px}
 .th .dg span{display:inline-block;transition:transform 1.2s var(--ease) var(--d,0s)}
 .js .th:not(.in) .dg span{transform:translateY(105%)}
-.th .tt{font:300 42px/1.06 var(--disp);letter-spacing:-.02em;padding-bottom:4px}
+.th .tt{font:300 44.94px/1.06 var(--disp);letter-spacing:-.02em;padding-bottom:4px}
 .th .tt b{display:block;font-weight:600}
-.th.nonum .tt{font-size:64px;line-height:1;padding-bottom:0}
+.th.nonum .tt{font-size:68.48px;line-height:1;padding-bottom:0}
 .dark .th .dg,.dark .th .tt{color:#fff}
 .hd2{display:flex;justify-content:space-between;align-items:flex-end;gap:60px}
 .hd2 .lead{max-width:540px;text-align:right;padding-bottom:8px}
@@ -509,7 +509,7 @@ h1,h2,h3,h4,p{margin:0}
 /* ============ S15 PAIR ============ */
 .pair{background:radial-gradient(60% 60% at 50% 0%,#123B33 0%,rgba(18,59,51,0) 70%),var(--night);padding-bottom:80px}
 .pair .top{display:flex;justify-content:space-between;align-items:flex-end;margin-top:44px}
-.pair h2{font:300 60px/1.05 var(--disp);letter-spacing:-.03em}
+.pair h2{font:300 64.2px/1.05 var(--disp);letter-spacing:-.03em}
 .pair h2 b{font-weight:600;color:var(--mint)}
 .pair .top p{max-width:470px;text-align:right;font:400 19px/1.5 var(--ui);color:rgba(255,255,255,.82)}
 .pics{display:grid;grid-template-columns:1fr 470px;gap:20px;margin-top:40px}
@@ -751,7 +751,7 @@ h1,h2,h3,h4,p{margin:0}
 .ct2{background:radial-gradient(60% 50% at 80% 0%,rgba(60,191,160,.45) 0%,rgba(60,191,160,0) 70%),radial-gradient(50% 50% at 10% 100%,rgba(18,102,80,.35) 0%,rgba(18,102,80,0) 70%),#05100C;min-height:1000px;padding-bottom:72px}
 .ctc{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:90px}
 .ct2 .sm{font:500 18px/1 var(--ui);color:rgba(255,255,255,.8)}
-.ct2 .fn{margin-top:22px;font:600 150px/1 var(--ui);letter-spacing:-.04em;background:linear-gradient(90deg,#fff 0%,#E8FFF7 55%,#9BF5D8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ct2 .fn{margin-top:22px;font:600 160.5px/1 var(--ui);letter-spacing:-.04em;background:linear-gradient(90deg,#fff 0%,#E8FFF7 55%,#9BF5D8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .ct2 .wts{display:flex;justify-content:space-between;width:100%;max-width:1180px;margin-top:22px;font:400 22px/1 var(--ui);color:rgba(255,255,255,.72)}
 .ct2 .wts .m{font-weight:500}.ct2 .wts .s{font-weight:600}.ct2 .wts .b{font-weight:700}
 .sw2{display:flex;justify-content:center;gap:14px;margin-top:22px}
@@ -841,7 +841,7 @@ h1,h2,h3,h4,p{margin:0}
 .closing .pic img{width:100%;height:100%;object-fit:cover;object-position:60% 30%;transform:scale(1.04);transition:transform 2.6s var(--ease)}
 .closing.in .pic img{transform:none}
 .closing .txt{position:absolute;left:96px;top:110px;width:640px}
-.closing h2{font:200 104px/.95 var(--disp);letter-spacing:-.045em}
+.closing h2{font:200 111.28px/.95 var(--disp);letter-spacing:-.045em}
 .closing h2 b{font-weight:600;display:block}
 .closing .txt>p{margin-top:24px;font:400 21px/1.5 var(--ui);color:rgba(255,255,255,.9);max-width:30ch}
 .appcta{display:inline-flex;align-items:center;gap:16px;margin-top:40px;padding:14px 26px 14px 14px;border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 0 0 6px rgba(255,255,255,.2),0 26px 50px -20px rgba(0,0,0,.6);transition:transform .35s var(--spring)}
@@ -925,6 +925,11 @@ h1,h2,h3,h4,p{margin:0}
 .ints li{padding:8px 0}
 /* ===== slide 28: card fits its content ===== */
 .sgrid{align-items:start}
+
+/* Standalone slide heading and supporting copy. */
+.an2 h2.stmt{font-size:49.22px}
+.states .th{margin-top:0}
+.states .states-subtitle{max-width:1050px;margin-top:18px;font-size:21px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -1605,8 +1610,9 @@ h1,h2,h3,h4,p{margin:0}
 <!-- S28 · 20 STATES -->
 <section class="sl states bg-white" aria-labelledby="saT">
   <header class="tb r" data-pg="28"><span class="lab">(20) — <b>States &amp; accessibility</b></span><span class="sp"><i></i></span><span class="br"><img loading="lazy" decoding="async" src="resolveai/mark.svg" alt="">ResolveAI</span><span class="pg"></span></header>
-  <div class="hd2" style="margin-top:44px">
-    <h2 class="stmt r" id="saT" style="max-width:900px">ResolveAI handles every situation <b>gracefully: loading, empty, error and disconnected.</b></h2>
+  <div class="states-heading r" style="margin-top:44px">
+    <h2 class="th nonum" id="saT"><span class="tt"><b>States &amp; accessibility</b></span></h2>
+    <p class="lead states-subtitle">ResolveAI handles every situation gracefully: loading, empty, error and disconnected.</p>
   </div>
   <div class="sgrid">
     <div class="stw r" id="states">
@@ -1638,25 +1644,7 @@ h1,h2,h3,h4,p{margin:0}
 </section>
 
 <!-- S29 · 21 HANDOFF -->
-<section class="sl hand" aria-labelledby="hoT">
-  <header class="tb r" data-pg="29"><span class="lab">(21) — <b>Handoff to development</b></span><span class="sp"><i></i></span><span class="br"><img loading="lazy" decoding="async" src="resolveai/mark.svg" alt="">ResolveAI</span><span class="pg"></span></header>
-  <div class="hd2">
-    <div class="th r" id="hoT"><span class="dg"><span>21</span></span><span class="tt">Collaboration<b>&amp; handoff</b></span></div>
-    <p class="lead r" style="--d:.2s">I wrote the rules down, <b>so every build followed them.</b></p>
-  </div>
-  <div class="hgrid">
-    <div class="docs2">
-      <div class="doc2 r"><i><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h8M9 17h5"/></svg></i><div><b>Product UX/UI spec</b><span>Every visual decision, plus 45 references: what to take and what to avoid</span></div></div>
-      <div class="doc2 r" style="--d:.08s"><i><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></i><div><b>Project state log</b><span>What changed and what was checked, after every build</span></div></div>
-      <div class="rbox r" style="--d:.16s"><span class="k">Rules checked on every build</span><div><span>Unified Inbox</span><span>6 Overview KPIs</span><span>Take over ≠ handoff ≠ escalation</span><span>Refunds need a person</span><span>Numbers match</span><span>NovaWear is fictional</span><span>No fake proof</span></div></div>
-    </div>
-    <div class="gw3">
-      <div class="gw r"><span class="k">Acceptance · Take over</span><p><em>Given</em> AI is handling a chat, <em>when</em> an agent clicks Take over, <em>then</em> AI stops and “Ryan took over from AI” is logged.</p></div>
-      <div class="gw r" style="--d:.08s"><span class="k">Acceptance · Refund</span><p><em>Given</em> an AI recommendation, <em>when</em> a person approves, <em>then</em> “Refund of ₹1,899 approved by Ryan Smith” is logged and the customer is told.</p></div>
-      <div class="gw r" style="--d:.16s"><span class="k">Acceptance · Data</span><p><em>Given</em> the Overview, <em>then</em> 248 open and 42 AI handling match the Inbox and the homepage.</p></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- S30 · 22 OUTCOMES -->
 <section class="sl dark outc" aria-labelledby="ocT">
