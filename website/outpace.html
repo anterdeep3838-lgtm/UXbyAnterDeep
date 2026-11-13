@@ -898,8 +898,17 @@ a{color:inherit;text-decoration:none}
 /* Clear section hierarchy, aligned with each slide's existing composition. */
 .sl .case-heading{font-style:normal;letter-spacing:normal;line-height:normal}
 .sl .case-title{
-  margin:0;font:750 60px/1.08 var(--fw);font-stretch:100%;
-  letter-spacing:-.025em;text-transform:uppercase;color:var(--bone);text-wrap:balance;
+  margin:0;font-size:60px;line-height:1.08;
+  text-transform:uppercase;color:var(--bone);text-wrap:balance;
+}
+/* Preserve the original display font assigned to each slide. */
+.sl .case-heading.dsp .case-title{
+  font-family:var(--fd);font-style:italic;font-weight:900;
+  font-stretch:normal;letter-spacing:-.005em;
+}
+.sl .case-heading.wide .case-title{
+  font-family:var(--fw);font-style:normal;font-weight:800;
+  font-stretch:125%;letter-spacing:-.01em;
 }
 .sl .case-subtitle{
   margin:18px 0 0;font:450 25px/1.45 var(--fb);font-stretch:normal;
