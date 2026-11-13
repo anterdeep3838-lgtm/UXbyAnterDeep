@@ -930,6 +930,33 @@ h1,h2,h3,h4,p{margin:0}
 .an2 h2.stmt{font-size:49.22px}
 .states .th{margin-top:0}
 .states .states-subtitle{max-width:1050px;margin-top:18px;font-size:21px;line-height:1.5}
+
+/* Card lift uses independent transforms so scroll reveals cannot override it. */
+.cons .turn,.research .in4,.dec .dk,.laws .lw{
+  translate:0 0;scale:1;
+  transition:opacity .9s var(--ease),transform 1.1s var(--ease),filter .9s var(--ease),
+    translate .28s var(--ease),scale .28s var(--ease),box-shadow .28s var(--ease);
+  transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),0s,0s,0s;
+}
+@media (hover:hover) and (pointer:fine){
+  .cons .turn.in:hover,.research .in4.in:hover,.dec .dk.in:hover,.laws .lw.in:hover{
+    transform:none;translate:0 -8px;scale:1.015;
+    box-shadow:0 0 0 1px rgba(18,102,80,.18),0 22px 38px -24px rgba(5,20,16,.32);
+    position:relative;z-index:2;
+  }
+}
+/* Lower contrast on the reverse face keeps opportunity text in focus. */
+.exist .bc{
+  background:radial-gradient(90% 85% at 100% 0%,rgba(60,191,160,.13),transparent 75%),
+    linear-gradient(150deg,#21483E 0%,#183A32 58%,#122E27 100%);
+}
+/* 8% of the 1000px slide canvas; flow keeps the list inside this slide. */
+.final .fside{grid-template-rows:330px auto}
+.final .ints{margin-top:80px}
+@media (prefers-reduced-motion:reduce){
+  .cons .turn,.research .in4,.dec .dk,.laws .lw{translate:none!important;scale:none!important}
+}
+
 </style>
 </head>
 <body>
