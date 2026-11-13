@@ -1695,6 +1695,15 @@ svg.wires .lbg{fill:#fff}
 /* iteration: before/after screens without phone bezel, shadow kept */
 .ovs{padding:0;background:none;border-radius:30px;overflow:hidden;box-shadow:0 0 0 1px rgba(5,22,20,.08),0 40px 60px -30px rgba(5,22,20,.55)}
 .ovs img{border-radius:30px}
+
+/* Consistent section title and supporting statement on slides 8–11. */
+.case-heading{min-width:0}
+.case-heading .h2{margin:0;max-width:none}
+.case-subtitle{margin:18px 0 0;font:400 23px/1.5 var(--display);letter-spacing:0;color:var(--ink-2);text-wrap:pretty;max-width:760px}
+.goals .case-subtitle,.dark .case-subtitle{color:rgba(255,255,255,.76)}
+.gtop,.comp .top,.prin .top,.jr .top{align-items:start}
+.gtop>.lead,.comp .top>.lead,.prin .top>.lead,.jr .top>.lead{margin-top:8px}
+
 </style>
 </head>
 <body>
@@ -1892,7 +1901,8 @@ svg.wires .lbg{fill:#fff}
 <section class="panel goals pad" aria-labelledby="gTitle">
   <header class="sh r"><span class="k"><img loading="lazy" decoding="async" src="kwick/kwick-icon.png" alt=""></span><span class="lb">Goals &amp; success criteria</span><span class="rail"><i></i></span><span class="n"></span></header>
   <div class="gtop">
-    <h2 class="h2 r" id="gTitle">Five goals, <span class="mute">and how I'd know each one worked.</span></h2>
+    <div class="case-heading"><h2 class="h2 r" id="gTitle">Goals &amp; success criteria</h2>
+    <p class="case-subtitle r" style="--d:.06s">Five goals, and how I'd know each one worked.</p></div>
     <p class="lead r" style="--d:.08s">KwicK is a prototype, so there are no live numbers. These are the signals I'd watch if it were a real app.</p>
   </div>
   <div class="glist" id="glist">
@@ -1923,7 +1933,8 @@ svg.wires .lbg{fill:#fff}
 <section class="panel comp pad g-mint" aria-labelledby="ccTitle">
   <header class="sh r"><span class="k"><img loading="lazy" decoding="async" src="kwick/kwick-icon.png" alt=""></span><span class="lb">Competitive analysis</span><span class="rail"><i></i></span><span class="n"></span></header>
   <div class="top">
-    <h2 class="h2 r" id="ccTitle" style="max-width:22ch">Good apps exist. <span class="mute">None answers all five questions before you book.</span></h2>
+    <div class="case-heading"><h2 class="h2 r" id="ccTitle">Competitive analysis</h2>
+    <p class="case-subtitle r" style="--d:.06s">Good apps exist. None answers all five questions before you book.</p></div>
     <p class="lead r" style="--d:.08s">Rahul needs five answers before he books. Here's how KwicK compares with the apps people already use.</p>
   </div>
   <div class="ctable" id="ctable" role="table" aria-label="Feature comparison">
@@ -1953,7 +1964,8 @@ svg.wires .lbg{fill:#fff}
 <section class="panel prin pad dark" aria-labelledby="prTitle">
   <header class="sh r"><span class="k"><img loading="lazy" decoding="async" src="kwick/kwick-icon.png" alt=""></span><span class="lb">Design principles</span><span class="rail"><i></i></span><span class="n"></span></header>
   <div class="top">
-    <h2 class="h2 r" id="prTitle">Three rules I set <span class="mute">before the first screen.</span></h2>
+    <div class="case-heading"><h2 class="h2 r" id="prTitle">Design principles</h2>
+    <p class="case-subtitle r" style="--d:.06s">Three rules I set before the first screen.</p></div>
     <p class="lead r" style="--d:.08s">Each one is quoted from my master brief. Every later change was checked against them.</p>
   </div>
   <div class="rules">
@@ -1968,7 +1980,8 @@ svg.wires .lbg{fill:#fff}
 <section class="panel jr pad g-paper" aria-labelledby="jTitle">
   <header class="sh r"><span class="k"><img loading="lazy" decoding="async" src="kwick/kwick-icon.png" alt=""></span><span class="lb">End-to-end journey</span><span class="rail"><i></i></span><span class="n"></span></header>
   <div class="top">
-    <h2 class="h2 r" id="jTitle">Eight steps, <span class="mute">from "it broke" to "it's fixed".</span></h2>
+    <div class="case-heading"><h2 class="h2 r" id="jTitle">End-to-end journey</h2>
+    <p class="case-subtitle r" style="--d:.06s">Eight steps, from "it broke" to "it's fixed".</p></div>
     <p class="lead r" style="--d:.08s">Tap the cyan ring on each screen to book a real repair, the way Rahul would. Once booked, the status moves on its own, just as it does in the app.</p>
   </div>
   <div class="wk" id="wk">
