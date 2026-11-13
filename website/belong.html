@@ -2195,8 +2195,8 @@ svg.wire .lbl text{font:600 13px var(--body);fill:var(--ink-2)}
   if (journey && wireframes) deck.insertBefore(journey, wireframes);
   document.querySelectorAll('.wf .retro, .wf .squote').forEach(el => el.remove());
 
-  // Number the final display order after the case-study sections are arranged.
-  const slides = [...deck.querySelectorAll(':scope > section.panel')];
+  // The opening video is an introduction; number only the case-study slides.
+  const slides = [...deck.querySelectorAll(':scope > section.panel:not(.cover)')];
   slides.forEach((slide, index) => {
     const counter = document.createElement('span');
     counter.className = 'slide-count';
