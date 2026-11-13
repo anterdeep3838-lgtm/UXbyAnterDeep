@@ -226,3 +226,11 @@
 }
 .ov .case-subtitle{font-size:28px}
 .pb .case-subtitle{font-size:27px}
+
+/* Fit broad headings to the available text columns without image overlap. */
+#s12 .case-title{font-size:58px;line-height:1.02}
+#s16 .case-title{font-size:70px}
+#s17 .case-title{font-size:64px}
+#s21 .case-title{font-size:64px;line-height:1.02}
+#s12 .case-title>span,#s18 .case-title>span,#s21 .case-title>span{display:block;white-space:nowrap}
+#s18 .case-heading{max-width:760px}

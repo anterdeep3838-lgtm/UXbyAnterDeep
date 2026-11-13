@@ -910,6 +910,14 @@ a{color:inherit;text-decoration:none}
 .ov .case-subtitle{font-size:28px}
 .pb .case-subtitle{font-size:27px}
 
+/* Fit broad headings to the available text columns without image overlap. */
+#s12 .case-title{font-size:58px;line-height:1.02}
+#s16 .case-title{font-size:70px}
+#s17 .case-title{font-size:64px}
+#s21 .case-title{font-size:64px;line-height:1.02}
+#s12 .case-title>span,#s18 .case-title>span,#s21 .case-title>span{display:block;white-space:nowrap}
+#s18 .case-heading{max-width:760px}
+
 </style>
 </head>
 <body class="js">
@@ -1241,7 +1249,7 @@ a{color:inherit;text-decoration:none}
   <div class="tb r" data-pg="12"><span class="no">12</span><span>Information architecture</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="ia-top">
     <div>
-      <div class="wide ia-h rx case-heading"><h2 class="case-title">Information Architecture</h2><p class="case-subtitle">A clear path to every product.</p></div>
+      <div class="wide ia-h rx case-heading"><h2 class="case-title"><span>Information</span><span>Architecture</span></h2><p class="case-subtitle">A clear path to every product.</p></div>
       <p class="lead r" style="--d:.1s">Shop by the sport you play, or by the gear you need. Four pillars stay visible at the top of every page, with no hamburger menu.</p>
     </div>
     <figure class="ph ia-ph r" style="--d:.15s"><img loading="lazy" decoding="async" src="outpace/G10-mega169.webp" alt="Shop by Sport menu open on a desktop monitor, listing six sports and the cricket categories with a buying guide and a Build a Cricket Kit link"></figure>
@@ -1349,19 +1357,6 @@ a{color:inherit;text-decoration:none}
     </ul>
   </div>
   <figure class="ph ds-ph r" style="--d:.1s"><img loading="lazy" decoding="async" src="outpace/G01-search.webp" alt="Search results for racket on a laptop, with suggestions, filters and product cards"></figure>
-  <div class="ds-demo r" style="--d:.2s">
-    <div class="sw-head"><span class="eb">Try it: drag the card right</span><span class="sw-bag" id="swBag" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.1 11.3a1.9 1.9 0 0 1-1.9 1.7H8a1.9 1.9 0 0 1-1.9-1.7z"/><path d="M8.7 8V6.6a3.3 3.3 0 0 1 6.6 0V8"/></svg>Cart<b id="swN">0</b></span></div>
-    <div class="sw" id="swDemo">
-      <div class="sw-track"><span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.1 11.3a1.9 1.9 0 0 1-1.9 1.7H8a1.9 1.9 0 0 1-1.9-1.7z"/><path d="M8.7 8V6.6a3.3 3.3 0 0 1 6.6 0V8"/></svg>Added to cart</span></div>
-      <div class="sw-card" tabindex="0" role="button" aria-label="Strikeline Grade 2 English Willow Bat, ₹2,549. Drag right or press Enter to add to cart">
-        <span class="sw-img" aria-hidden="true"><img loading="lazy" decoding="async" src="outpace/bat-cart.webp" alt=""></span>
-        <div class="sw-t"><b>Strikeline Grade 2 English Willow Bat</b><small>Cricket · Bats · Grade 2 English willow</small><span class="sw-ok"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>In stock · 7-day returns</span></div>
-        <div class="sw-p"><b>₹2,549</b><small>Inclusive of taxes</small></div>
-        <i class="sw-hint" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></svg></i>
-      </div>
-    </div>
-    <p class="sw-state" id="swState" aria-live="polite">Not in cart</p>
-  </div>
 </section>
 
 <!-- 17 CORE: COMPARISON & PRODUCT PAGE -->
@@ -1399,7 +1394,7 @@ a{color:inherit;text-decoration:none}
 <!-- 18 CORE: CHECKOUT & RETURNS -->
 <section class="sl co alt" id="s18" aria-label="Core experience: checkout and returns">
   <div class="tb r" data-pg="18"><span class="no">18</span><span>Core experience · Checkout &amp; returns</span><span class="ln"><i></i></span><span class="pg"></span></div>
-  <div class="dsp co-h rx case-heading"><h2 class="case-title">Checkout &amp; Returns</h2><p class="case-subtitle">Pay clean. Return easy.</p></div>
+  <div class="dsp co-h rx case-heading"><h2 class="case-title"><span>Checkout</span><span>&amp; Returns</span></h2><p class="case-subtitle">Pay clean. Return easy.</p></div>
   <p class="lead co-lead r" style="--d:.1s">The finish line is where trust is won. Every cost is visible before payment, and a wrong size is fixed in three steps.</p>
   <div class="co-grid">
     <div class="co-col">
@@ -1463,7 +1458,7 @@ a{color:inherit;text-decoration:none}
 <section class="sl rp" id="s21" aria-label="Responsive design, mobile and accessibility">
   <div class="tb r" data-pg="21"><span class="no">21</span><span>Responsive &amp; accessible</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="rp-top">
-    <div class="wide rp-h rx case-heading"><h2 class="case-title">Responsive &amp; Accessible</h2><p class="case-subtitle">Resize the screen. Keep the experience.</p></div>
+    <div class="wide rp-h rx case-heading"><h2 class="case-title"><span>Responsive</span><span>&amp; Accessible</span></h2><p class="case-subtitle">Resize the screen. Keep the experience.</p></div>
     <p class="lead r" style="--d:.1s">Desktop, tablet and phone share one layout system. The navigation never hides behind a hamburger, it just moves.</p>
   </div>
   <figure class="ph rp-ph1 r" style="--d:.1s"><img loading="lazy" decoding="async" src="outpace/G14-t_home.webp" alt="Outpace homepage on a tablet with keyboard stand"></figure>
@@ -1790,24 +1785,6 @@ a{color:inherit;text-decoration:none}
     dset(0); let dv = false; new IntersectionObserver(([e]) => dv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('s15'));
     if (!reduce) setInterval(() => { if (dv && !dHold && !dTouched) dset((dk + 1) % 5); }, 4600);
   }
-
-  // 15 swipe to add (drag, or Enter/Space)
-  const sw = document.getElementById('swDemo');
-  if (sw) { const card = sw.querySelector('.sw-card'), st = document.getElementById('swState'); let on = false, x0 = 0, dx = 0, drag = false;
-    const W = () => sw.clientWidth;
-    const set = v => { on = v; sw.classList.add('anim'); sw.classList.toggle('on', on); sw.style.setProperty('--x', '0px');
-      sw.querySelector('.sw-track span').innerHTML = on ? sw.dataset.add : sw.dataset.rem;
-      st.innerHTML = on ? '<b>In cart · 1</b> · drag left, or press Enter, to remove' : 'Not in cart · drag right, or press Enter, to add'; st.classList.toggle('on', on);
-      const bg = document.getElementById('swBag'); if (bg) { document.getElementById('swN').textContent = on ? 1 : 0; bg.classList.toggle('on', on); bg.classList.remove('bump'); void bg.offsetWidth; if (on) bg.classList.add('bump'); }
-      setTimeout(() => sw.classList.remove('anim'), 460); };
-    sw.dataset.add = sw.querySelector('.sw-track span').innerHTML; sw.dataset.rem = sw.dataset.add.replace('Added to cart', 'Removed');
-    card.addEventListener('pointerdown', e => { drag = true; x0 = e.clientX; dx = 0; sw.classList.add('drag'); card.setPointerCapture(e.pointerId); });
-    card.addEventListener('pointermove', e => { if (!drag) return; const kz = parseFloat(getComputedStyle(deck).getPropertyValue('--k')) || 1; dx = (e.clientX - x0) / kz; dx = on ? Math.min(0, dx) : Math.max(0, dx);
-      sw.style.setProperty('--x', Math.abs(dx) + 'px'); card.style.transform = `translateX(${dx}px)`; });
-    const up = () => { if (!drag) return; drag = false; sw.classList.remove('drag'); card.style.transform = ''; if (Math.abs(dx) > W() * .35) set(!on); else { sw.classList.add('anim'); sw.style.setProperty('--x', '0px'); setTimeout(() => sw.classList.remove('anim'), 460); } };
-    card.addEventListener('pointerup', up); card.addEventListener('pointercancel', up);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!on); } });
-    set(false); }
 
   // 16 compare: differences only
   const cpS = document.getElementById('cpSw');

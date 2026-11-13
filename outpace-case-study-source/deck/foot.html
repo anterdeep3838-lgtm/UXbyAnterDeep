@@ -129,24 +129,6 @@
     if (!reduce) setInterval(() => { if (dv && !dHold && !dTouched) dset((dk + 1) % 5); }, 4600);
   }
 
-  // 15 swipe to add (drag, or Enter/Space)
-  const sw = document.getElementById('swDemo');
-  if (sw) { const card = sw.querySelector('.sw-card'), st = document.getElementById('swState'); let on = false, x0 = 0, dx = 0, drag = false;
-    const W = () => sw.clientWidth;
-    const set = v => { on = v; sw.classList.add('anim'); sw.classList.toggle('on', on); sw.style.setProperty('--x', '0px');
-      sw.querySelector('.sw-track span').innerHTML = on ? sw.dataset.add : sw.dataset.rem;
-      st.innerHTML = on ? '<b>In cart · 1</b> · drag left, or press Enter, to remove' : 'Not in cart · drag right, or press Enter, to add'; st.classList.toggle('on', on);
-      const bg = document.getElementById('swBag'); if (bg) { document.getElementById('swN').textContent = on ? 1 : 0; bg.classList.toggle('on', on); bg.classList.remove('bump'); void bg.offsetWidth; if (on) bg.classList.add('bump'); }
-      setTimeout(() => sw.classList.remove('anim'), 460); };
-    sw.dataset.add = sw.querySelector('.sw-track span').innerHTML; sw.dataset.rem = sw.dataset.add.replace('Added to cart', 'Removed');
-    card.addEventListener('pointerdown', e => { drag = true; x0 = e.clientX; dx = 0; sw.classList.add('drag'); card.setPointerCapture(e.pointerId); });
-    card.addEventListener('pointermove', e => { if (!drag) return; const kz = parseFloat(getComputedStyle(deck).getPropertyValue('--k')) || 1; dx = (e.clientX - x0) / kz; dx = on ? Math.min(0, dx) : Math.max(0, dx);
-      sw.style.setProperty('--x', Math.abs(dx) + 'px'); card.style.transform = `translateX(${dx}px)`; });
-    const up = () => { if (!drag) return; drag = false; sw.classList.remove('drag'); card.style.transform = ''; if (Math.abs(dx) > W() * .35) set(!on); else { sw.classList.add('anim'); sw.style.setProperty('--x', '0px'); setTimeout(() => sw.classList.remove('anim'), 460); } };
-    card.addEventListener('pointerup', up); card.addEventListener('pointercancel', up);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!on); } });
-    set(false); }
-
   // 16 compare: differences only
   const cpS = document.getElementById('cpSw');
   if (cpS) cpS.addEventListener('click', () => { const v = cpS.getAttribute('aria-checked') !== 'true'; cpS.setAttribute('aria-checked', v); document.getElementById('cpT').classList.toggle('diff', v); });
