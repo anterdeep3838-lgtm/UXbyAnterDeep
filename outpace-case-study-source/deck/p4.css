@@ -9,9 +9,9 @@
 .br-txt{position:absolute;left:680px;top:170px;width:820px}
 .br-h{font-size:130px}
 .br-txt .lead{margin-top:22px;max-width:560px}
-.br-pts{position:absolute;left:340px;top:390px;width:480px}
-.br-pts li{padding:16px 0;border-top:1px solid var(--line);font-size:18px;line-height:1.5;color:var(--bone2)}
-.br-pts b{display:block;font:900 italic 26px/1.1 var(--fd);text-transform:uppercase;color:var(--flare);margin-bottom:4px}
+.br-pts{position:absolute;left:340px;top:390px;width:480px;display:grid;gap:10px}
+.br-pts li{padding:18px 0;border-top:1px solid var(--line);font-size:18px;line-height:1.5;color:var(--bone2)}
+.br-pts b{display:block;font:800 italic 26px/1.1 var(--fd);letter-spacing:.04em;text-transform:uppercase;color:var(--flare);margin-bottom:7px}
 
 /* ── 22 typography ── */
 .ty{min-height:1080px}
@@ -211,3 +211,16 @@
 .ob b{font-weight:inherit}
 .cl-use{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,90,31,.12);border:1px solid rgba(255,122,46,.35);font-size:15px;font-weight:600;color:#fff}
 .cl-use span{font:650 10.5px/1 var(--fw);font-stretch:116%;letter-spacing:.14em;text-transform:uppercase;color:var(--flare)}
+
+/* Clear section hierarchy, aligned with each slide's existing composition. */
+.sl .case-heading{font-style:normal;letter-spacing:normal;line-height:normal}
+.sl .case-title{
+  margin:0;font:750 60px/1.08 var(--fw);font-stretch:100%;
+  letter-spacing:-.025em;text-transform:uppercase;color:var(--bone);text-wrap:balance;
+}
+.sl .case-subtitle{
+  margin:18px 0 0;font:450 25px/1.45 var(--fb);font-stretch:normal;
+  letter-spacing:0;text-transform:none;color:var(--bone2);text-wrap:pretty;
+}
+.ov .case-subtitle{font-size:28px}
+.pb .case-subtitle{font-size:27px}

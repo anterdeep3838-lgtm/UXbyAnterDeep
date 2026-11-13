@@ -14,7 +14,7 @@
 .rc-top span{font:650 11.5px/1 var(--fw);font-stretch:116%;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);padding:7px 11px;border-radius:999px;border:1px solid var(--line2)}
 .rc-viz{height:232px;margin:20px 0 22px;padding:18px;border-radius:18px;background:rgba(255,236,224,.035);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:16px}
 .rc h3{font:700 21px/1.25 var(--fb);color:#fff}
-.rc-so{margin-top:14px;font-size:16.5px;line-height:1.5;color:var(--bone2)}
+.rc-so{margin-top:14px;font-size:17.5px;line-height:1.5;color:var(--bone2)}
 .rc-so span{display:block;font:650 11px/1 var(--fw);font-stretch:116%;letter-spacing:.14em;text-transform:uppercase;color:var(--flare);margin-bottom:7px}
 .rc-src{margin-top:auto;padding-top:16px;align-self:flex-start;font:650 11px/1 var(--fw);font-stretch:116%;letter-spacing:.14em;text-transform:uppercase;color:var(--ash2);transition:color .25s}
 .rc-src::after{content:" ↗"}

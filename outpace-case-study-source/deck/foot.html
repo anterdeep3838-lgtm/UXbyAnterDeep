@@ -1,4 +1,3 @@
-
 </main>
 <script>
 (() => {
@@ -152,18 +151,6 @@
   const cpS = document.getElementById('cpSw');
   if (cpS) cpS.addEventListener('click', () => { const v = cpS.getAttribute('aria-checked') !== 'true'; cpS.setAttribute('aria-checked', v); document.getElementById('cpT').classList.toggle('diff', v); });
 
-  // 17 checkout stepper
-  const coB = [...document.querySelectorAll('#coSteps button')];
-  if (coB.length) { const MSG = [
-      'Saved address: <em>Aarav Sharma · Flat 402, Lotus Residency, Patna 800001.</em> Change it any time before payment.',
-      'Standard delivery is <em>free</em>. Express shows <em>"Not available for 800001. Express covers metro pincodes."</em>',
-      'Choose UPI, card or cash on delivery. The total is already final: <em>no new charges appear here.</em>'];
-    let ck = 0, cTouch = false;
-    const cset = k => { ck = k; coB.forEach((b, j) => { b.classList.toggle('on', j === k); b.classList.toggle('done', j < k); b.setAttribute('aria-selected', j === k); }); document.getElementById('coMsg').innerHTML = MSG[k]; };
-    coB.forEach((b, k) => b.addEventListener('click', () => { cTouch = true; cset(k); })); cset(0);
-    let cv = false; new IntersectionObserver(([e]) => cv = e.isIntersecting, {threshold: .3}).observe(document.getElementById('s18'));
-    if (!reduce) setInterval(() => { if (cv && !cTouch) cset((ck + 1) % 3); }, 3200); }
-
   // 18 guided questions: progress runs, budget slider
   const kqL = [...document.querySelectorAll('#kqRun li')];
   if (kqL.length) { const run = document.getElementById('kqRun'); let qk = 0, qh = false;
@@ -267,5 +254,6 @@
 <style>.zz,.zz *{animation-play-state:paused!important}</style>
 <script>/* perf: pause looping animations in slides that are off-screen */
 (()=>{if(!('IntersectionObserver' in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('zz',!e.isIntersecting)),{rootMargin:'200px 0px'});document.querySelectorAll('section').forEach(s=>io.observe(s));})();</script>
+<script src="/assets/a.js" defer></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 <!-- 01 COVER -->
 <section class="sl cv" id="s1" aria-label="Cover">
-  <img decoding="async" class="cv-img" src="outpace/cover-home.webp" alt="Outpace homepage on a laptop, with the Outpace wordmark above">
+  <img fetchpriority="high" decoding="async" class="cv-img" src="outpace/cover-home.webp" alt="Outpace homepage on a laptop, with the Outpace wordmark above">
   <div class="cv-top">
     <span class="eb">UX/UI Case Study</span>
     <span class="cv-mark">{{mark}}</span>
@@ -19,7 +19,7 @@
 <section class="sl ov" id="s2" aria-label="Overview">
   <div class="tb r" data-pg="2"><span class="no">02</span><span>Overview</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="ov-mark" aria-hidden="true">{{mark}}<i></i><i></i><i></i></div>
-  <h2 class="dsp ov-h rx">Less guesswork.<br><span class="fire">Better gear choices.</span></h2>
+  <div class="dsp ov-h rx case-heading"><h2 class="case-title">Overview</h2><p class="case-subtitle">Less guesswork. Better gear choices.</p></div>
   <div class="ov-row">
   <p class="lead ov-p r" style="--d:.15s">Outpace is a sports equipment and accessories store for six sports. It explains specs in plain words, compares products side by side, builds a full kit inside a budget, and keeps checkout and returns clear.</p>
   <div class="ov-sports r" style="--d:.3s" aria-label="Sports covered">
@@ -42,14 +42,14 @@
   <div class="vb-txt">
     <span class="eb r">Outpace</span>
     <h2 class="dsp vb-h rx" style="--d:.1s">Own<br>your<br><span class="fire">pace.</span></h2>
-    <p class="body r" style="--d:.25s">A night-stadium store: near-black ground, one ember light source, and gear that catches fire when you reach for it.</p>
+    <p class="body r" style="--d:.25s">Discover performance-driven gear built to match your ambition, push your limits, and take your game to the next level.</p>
   </div>
   <div class="vb-word" aria-hidden="true">OUTPACE</div>
 </section>
 
 <!-- 04 ROLE & TIMELINE -->
-<section class="sl rl alt" id="s4" aria-label="My role, responsibilities and timeline">
-  <div class="tb r" data-pg="4"><span class="no">04</span><span>Role &amp; timeline</span><span class="ln"><i></i></span><span class="pg"></span></div>
+<section class="sl rl alt" id="s4" aria-label="My role and responsibilities">
+  <div class="tb r" data-pg="4"><span class="no">04</span><span>Role &amp; responsibilities</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="rl-l">
     <h2 class="wide rl-h rx">My role</h2>
     <p class="lead r" style="--d:.1s">UI/UX Designer, end to end. I owned Outpace from first research to a working prototype.</p>
@@ -85,7 +85,7 @@
   <div class="tb r" data-pg="5"><span class="no">05</span><span>The problem</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <figure class="ph pb-ph r"><img loading="lazy" decoding="async" src="outpace/G06-cmp.webp" alt="Outpace compare page on a monitor, three cricket bats side by side"></figure>
   <div class="pb-txt">
-    <h2 class="dsp pb-h rx">Sports gear is <span class="fire">spec-heavy.</span></h2>
+    <div class="dsp pb-h rx case-heading"><h2 class="case-title">The Problem</h2><p class="case-subtitle">Sports gear is spec-heavy.</p></div>
     <p class="lead r" style="--d:.1s">Weight, balance, grip, willow grade. Most stores list the numbers and leave players to decode them alone, so buying online turns into guesswork.</p>
   </div>
   <div class="pb-race" id="pbRace">
@@ -104,7 +104,7 @@
   <div class="tb r" data-pg="6"><span class="no">06</span><span>4W + H</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="wh-word" aria-hidden="true">4W+H</div>
   <div class="wh-top">
-    <h2 class="wide wh-h rx">Read the<br><span class="fire">play.</span></h2>
+    <div class="wide wh-h rx case-heading"><h2 class="case-title">4W + H</h2><p class="case-subtitle">Read the play.</p></div>
     <p class="lead r" style="--d:.1s">Five questions set the brief before the first screen: who Outpace serves, what it is, why it is needed, where it lives and how it works.</p>
   </div>
   <ol class="wh-track" id="whTrack">
@@ -112,7 +112,7 @@
       <span class="wh-ic">{{i:user}}</span>
       <b class="dsp wh-w">Who</b>
       <h3>Who is it for?</h3>
-      <p>Players in India buying gear online. Starters picking a first set, regulars upgrading, and kit builders equipping a season for themselves, a child or a team.</p>
+      <p>Players in India buying gear online—from first-time buyers to regulars upgrading and families or teams building a full kit.</p>
       <ul class="wh-tg"><li>Starter</li><li>Regular</li><li>Kit Builder</li></ul>
       <span class="wh-start"><b class="dsp">1</b></span>
     </li>
@@ -120,7 +120,7 @@
       <span class="wh-ic">{{i:bag}}</span>
       <b class="dsp wh-w">What</b>
       <h3>What is Outpace?</h3>
-      <p>A sports equipment and accessories store for six sports, built to help players buy the right gear, not just more gear.</p>
+      <p>A six-sport equipment and accessories store that helps players choose the right gear.</p>
       <ul class="wh-tg"><li>6 sports</li><li>Gear</li><li>Accessories</li></ul>
       <span class="wh-start"><b class="dsp">2</b></span>
     </li>
@@ -128,7 +128,7 @@
       <span class="wh-ic">{{i:info}}</span>
       <b class="dsp wh-w">Why</b>
       <h3>Why does it matter?</h3>
-      <p>Gear is spec-heavy. Stores list numbers without meaning, a full kit takes many searches, and costs and returns show up late. Buying turns into guesswork.</p>
+      <p>Specs lack context, kits take multiple searches, and costs or returns appear too late—turning buying into guesswork.</p>
       <ul class="wh-tg"><li>Jargon</li><li>Scattered kits</li><li>Late costs</li></ul>
       <span class="wh-start"><b class="dsp">3</b></span>
     </li>
@@ -136,7 +136,7 @@
       <span class="wh-ic">{{i:pin}}</span>
       <b class="dsp wh-w">Where</b>
       <h3>Where is it used?</h3>
-      <p>On the web, across desktop, tablet and phone, for the Indian market, with rupee pricing, six-digit pincodes and delivery checks before checkout.</p>
+      <p>A responsive web store for India, with rupee pricing, six-digit pincodes and delivery checks before checkout.</p>
       <ul class="wh-tg"><li>Desktop</li><li>Tablet</li><li>Mobile</li></ul>
       <span class="wh-start"><b class="dsp">4</b></span>
     </li>
@@ -144,7 +144,7 @@
       <span class="wh-ic">{{i:bolt}}</span>
       <b class="dsp wh-w">How</b>
       <h3>How does it solve it?</h3>
-      <p>Specs in plain words, up to three products compared side by side, a five-question kit inside a budget, and the full price before payment with guided returns.</p>
+      <p>Plain-language specs, three-product comparison, a five-question kit builder, upfront pricing and guided returns.</p>
       <ul class="wh-tg"><li>Explain</li><li>Compare</li><li>Build</li><li>Pay clear</li></ul>
       <span class="wh-start"><b class="dsp">5</b></span>
     </li>
@@ -154,7 +154,7 @@
 <!-- 07 TARGET USERS -->
 <section class="sl us" id="s7" aria-label="Target users and their needs">
   <div class="tb r" data-pg="7"><span class="no">07</span><span>Target users</span><span class="ln"><i></i></span><span class="pg"></span></div>
-  <h2 class="wide us-h rx">Three players,<br><span class="fire">one store.</span></h2>
+  <div class="wide us-h rx case-heading"><h2 class="case-title">Target Users</h2><p class="case-subtitle">Three players, one store.</p></div>
   <figure class="ph us-ph r" style="--d:.2s"><img loading="lazy" decoding="async" src="outpace/G03-cricket.webp" alt="Outpace cricket page on a laptop"></figure>
   <div class="us-lanes" id="usLanes">
     <article class="us-ln r" style="--d:.1s" tabindex="0">
@@ -180,7 +180,7 @@
   <div class="tb r" data-pg="8"><span class="no">08</span><span>Goals &amp; success criteria</span><span class="ln"><i></i></span><span class="pg"></span></div>
   <div class="gl-top">
     <div>
-      <h2 class="wide gl-h rx">What winning<br><span class="fire">looks like.</span></h2>
+      <div class="wide gl-h rx case-heading"><h2 class="case-title">Goals &amp; Success Criteria</h2><p class="case-subtitle">What winning looks like.</p></div>
       <p class="lead r" style="--d:.1s">Three goals, each with clear criteria the design had to meet.</p>
     </div>
     <figure class="ph gl-ph r" style="--d:.15s"><img loading="lazy" decoding="async" src="outpace/G12-kit.webp" alt="Build Your Kit, question one, on a desktop monitor"></figure>
@@ -213,8 +213,8 @@
   <svg class="sc-pitch" viewBox="0 0 1400 760" aria-hidden="true"><g fill="none" stroke="rgba(255,236,224,.07)" stroke-width="2"><rect x="10" y="10" width="1380" height="740" rx="6"/><line x1="700" y1="10" x2="700" y2="750"/><circle cx="700" cy="380" r="120"/></g></svg>
   <div class="sc-wrap">
     <div class="sc-in">
-      <h2 class="wide sc-h rx">The full<br><span class="fire">store.</span></h2>
-      <p class="body r" style="--d:.1s">Not a single feature. Every page a shopper needs, from the first browse to a refund.</p>
+      <div class="wide sc-h rx case-heading"><h2 class="case-title">Scope &amp; Constraints</h2><p class="case-subtitle">The full store.</p></div>
+      <p class="body r" style="--d:.1s">Every page a shopper needs, from picking the right gear to checking out or getting a refund.</p>
       <ol class="sc-grid" id="scGrid">
         <li class="r">{{i:grid}}Six-sport catalogue</li>
         <li class="r">{{i:search}}Search, filters &amp; sorting</li>

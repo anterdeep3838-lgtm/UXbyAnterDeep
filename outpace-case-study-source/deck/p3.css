@@ -80,8 +80,9 @@
 .co-h{font-size:118px}
 .co-lead{position:absolute;right:100px;top:200px;width:560px}
 .co-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px}
-.co-ph1{height:360px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
-.co-ph1 img{object-position:50% 45%}
+.co-col:first-child{display:flex}
+.co-ph1{flex:1;height:auto;min-height:560px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.co-ph1 img{object-position:46% 50%}
 .co-demo{margin-top:28px;padding:26px 28px;border-radius:22px;background:var(--ink2);border:1px solid var(--line)}
 .co-steps{display:flex;gap:6px;counter-reset:s}
 .co-steps li{flex:1;counter-increment:s}
@@ -100,7 +101,7 @@
 .co-pts .ic{width:28px;height:28px;color:var(--flare);margin-top:2px}
 .co-pts p{font-size:18px;line-height:1.5;color:var(--bone2)}
 .co-pts b{display:block;font-size:20px;color:#fff;margin-bottom:2px}
-.co-ret{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center;margin-top:20px;padding-top:26px;border-top:1px solid var(--line2)}
+.co-ret{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin-top:20px;padding-top:26px;border-top:1px solid var(--line2)}
 .co-ph2{height:280px}
 .co-ph2 img{object-position:55% 50%}
 .co-rs{margin-top:16px}
@@ -165,10 +166,10 @@
 .rp{min-height:1080px}
 .rp-top{width:620px}
 .rp-h{font-size:80px;margin-bottom:24px}
-.rp-ph1{position:absolute;right:420px;top:150px;width:440px;height:420px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.rp-ph1{position:absolute;right:400px;top:150px;width:390px;height:420px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
 .rp-ph1 img{object-position:50% 55%}
-.rp-ph2{position:absolute;right:100px;top:190px;width:300px;height:520px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
-.rp-ph2 img{object-position:48% 50%}
+.rp-ph2{position:absolute;right:100px;top:190px;width:280px;height:520px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.rp-ph2 img{object-position:50% 50%}
 .rp-demo{position:absolute;left:100px;top:600px;width:760px}
 .rp-stage{position:relative;margin-top:16px;height:250px;padding:18px;border-radius:22px;background:repeating-linear-gradient(90deg,rgba(255,236,224,.04) 0 1px,transparent 1px 40px),var(--ink2);border:1px solid var(--line)}
 .rp-frame{position:relative;height:100%;width:var(--w,100%);border-radius:14px;background:var(--ink);border:1px solid var(--line2);overflow:hidden;transition:width .05s linear}
