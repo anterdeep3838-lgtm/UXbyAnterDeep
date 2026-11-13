@@ -1460,6 +1460,22 @@ svg.wire .lbl text{font:600 13px var(--body);fill:var(--ink-2)}
 .mag.app em{margin-left:auto}
 .ctas .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ctas .row .mag.w{height:66px;padding:0 24px 0 12px;gap:14px;font-size:18px}
+
+/* Consistent slide numbering above the content and image layers. */
+.panel > .slide-count{
+  position:absolute;top:42px;right:48px;z-index:20;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:94px;height:36px;padding:0 14px;border-radius:999px;
+  font:600 17px/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  color:var(--ink);background:rgba(255,255,255,.88);
+  box-shadow:inset 0 0 0 1px rgba(26,21,20,.1);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none;
+}
+.panel.dark > .slide-count{
+  color:#fff;background:rgba(255,255,255,.1);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);
+}
+
 </style>
 </head>
 <body>
@@ -2178,6 +2194,16 @@ svg.wire .lbl text{font:600 13px var(--body);fill:var(--ink-2)}
   if (principles && homeScreen) deck.insertBefore(principles, homeScreen);
   if (journey && wireframes) deck.insertBefore(journey, wireframes);
   document.querySelectorAll('.wf .retro, .wf .squote').forEach(el => el.remove());
+
+  // Number the final display order after the case-study sections are arranged.
+  const slides = [...deck.querySelectorAll(':scope > section.panel')];
+  slides.forEach((slide, index) => {
+    const counter = document.createElement('span');
+    counter.className = 'slide-count';
+    counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + slides.length;
+    counter.setAttribute('aria-label', 'Slide ' + (index + 1) + ' of ' + slides.length);
+    slide.append(counter);
+  });
   let K = 1;
   const fit = () => { K = Math.min(1, document.documentElement.clientWidth / 1640); deck.style.setProperty('--k', K); };
   fit(); addEventListener('resize', () => { fit(); drawIA(); });
